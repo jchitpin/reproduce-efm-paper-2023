@@ -1,0 +1,70 @@
+\begin{tikzpicture}[%
+  %>=latex,
+  cartoon/.style={%
+    {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
+    %line width=1.5pt
+    line width=1.0pt
+  },
+  decoration={%
+    markings,
+    %mark=at position 1.0 with {\arrow{>}}
+    mark=at position 1.0 with {Stealth}
+  },
+  every node/.style={%
+    %font=\sffamily\footnotesize\itshape,
+    font=\sffamily\footnotesize,
+    text=black,
+    text centered,
+    align=center
+  },
+  frame/.style={draw=black,inner sep=2pt}
+]
+
+  % Nodes
+  \node[lnode] (A1) {State 1\\Mets.\\1};
+  \node[lnode,below=1.0cm of A1,xshift=-2.5cm] (A2) {State 2\hphantom{0}\\Mets.\\1,2};
+  \node[lnode,below=1.0cm of A1,xshift=+2.5cm] (A4) {State 3\hphantom{0}\\Mets.\\1,4};
+  \node[lnode,below=1.22cm of A2] (A23) {State 4\hphantom{0}\\Mets.\\1,2,3};
+  \node[lnode,below=1.22cm of A23,fill=none,draw=white,text=white] (A234) {State 6\hphantom{0}\\Mets.\\1,2,3,4};
+  \node[lnode,below=1.22cm of A4] (A43) {State 5\hphantom{0}\\Mets.\\1,4,3};
+  \node[lnode,below=1.22cm of A43,fill=none,draw=white,text=white] (A432) {State 7\hphantom{0}\\Mets.\\1,4,3,2};
+
+  % Blanks for spacing
+  \node[lnode,draw=white,fill=white,below=0.5cm of A234,xshift=-1.0cm,yshift=1.5cm] (X1) {\textcolor{white}{State 00}\\\textcolor{white}{Mets.}\\\textcolor{white}{1,2,4,5}};
+  \node[lnode,draw=white,fill=white,below=0.5cm of A432,xshift=+1.0cm,yshift=1.5cm] (X2) {\textcolor{white}{State 00}\\\textcolor{white}{Mets.}\\\textcolor{white}{1,2,4,5}};
+  \node[left=0.1cm of X1,yshift=3.5cm,xshift=+0.2cm] (Y1) {};
+  \node[left=0.3cm of A2] () {2/5};
+  \node[right=0.1cm of X2,yshift=3.5cm,xshift=-0.2cm] (Y2) {};
+  \node[right=0.3cm of A4] () {2/5};
+
+  % Intra-node edges
+  \draw[cartoon] (A1) to node [above left=0.1pt,yshift=-5pt] {1/2} (A2);
+  \draw[cartoon] (A1) to node [above right=0.1pt,yshift=-5pt] {1/2} (A4);
+  \draw[cartoon] (A2) to node [left=0.1pt,yshift=+1pt] {3/5} (A23);
+  \draw[cartoon] (A4) to node [right=0.1pt,yshift=+1pt] {3/5} (A43);
+  \draw[cartoon] (A23) to node [left=0.1pt,yshift=+1pt] {1/3} (A234);
+  \draw[cartoon] (A43) to node [right=0.1pt,yshift=+1pt] {1/3} (A432);
+
+  % EFM edges
+  \draw[cartoon,tbTeal, bend right=25,postaction={decorate}] (A2) to node [above left=0.1pt,xshift=+3.0pt,yshift=-5.0pt] {2/5} (A1);
+  \draw[cartoon,tbTeal, bend right=22,postaction={decorate}] (A23) to node [above left=0.1pt,xshift=+3.0pt,yshift=-3.0pt] {1/3} (A1);
+  \draw[cartoon,postaction={decorate},tbTeal,rounded corners=30pt] (A234.center) -| (Y1.center) |- (A1);
+  \draw[cartoon,tbTeal, bend left=25,postaction={decorate}] (A4) to node [above right=0.1pt,xshift=-3.0pt,yshift=-5.0pt] {2/5} (A1);
+  \draw[cartoon,tbTeal, bend left=22,postaction={decorate}] (A43) to node [above left=0.1pt,xshift=-3.0pt,yshift=-3.0pt] {1/3} (A1);
+  \draw[cartoon,postaction={decorate},tbTeal,rounded corners=30pt] (A432.center) -| (Y2.center) |- (A1);
+
+  \draw[cartoon,tbTeal, bend right=30,postaction={decorate}] (A23) to node [right=0.1pt,xshift=+0.0pt,yshift=+1.0pt] {1/3} (A2);
+  \draw[cartoon,tbTeal, bend right=30,postaction={decorate}] (A234) to node [right=0.1pt,xshift=+0.0pt,yshift=+1.0pt] {3/5} (A23);
+
+  \draw[cartoon,tbTeal, bend left=30,postaction={decorate}] (A43) to node [left=0.1pt,xshift=+0.0pt,yshift=+1.0pt] {1/3} (A4);
+  \draw[cartoon,tbTeal, bend left=30,postaction={decorate}] (A432) to node [left=0.1pt,xshift=+0.0pt,yshift=+1.0pt] {1/3} (A43);
+
+  % Blanks for spacing
+  \node[lnode,fill=white,below=1.22cm of A23,text=white,draw=white,fill opacity=1.0] (A234) {State 6\hphantom{0}\\Mets.\\1,2,3,4};
+  \node[lnode,fill=white,below=1.22cm of A43,text=white,draw=white,fill opacity=1.0] (A432) {State 7\hphantom{0}\\Mets.\\1,4,3,2};
+  \node[lnode,below=1.22cm of A23] (A234) {State 6\hphantom{0}\\Mets.\\1,2,3,4};
+  \node[lnode,below=1.22cm of A43] (A432) {State 7\hphantom{0}\\Mets.\\1,4,3,2};
+
+
+\end{tikzpicture}
+

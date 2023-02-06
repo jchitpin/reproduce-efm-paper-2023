@@ -1,0 +1,83 @@
+\documentclass[varwidth,border=0pt]{standalone}
+
+% Tikz packages
+\usepackage{tikz}
+\usetikzlibrary{%
+  patterns, plotmarks, backgrounds, shapes, arrows, calc, trees, positioning,
+  chains, shapes.geometric, decorations.pathreplacing,
+  decorations.pathmorphing, shapes.arrows, decorations.markings, quotes,
+  arrows.meta, spy, fit, matrix
+}
+
+% General image and colour support
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Captions and subcaptions
+\usepackage{caption}
+\usepackage[labelformat=parens]{subcaption}
+\renewcommand\thesubfigure{\sffamily\alph{subfigure})}
+
+% Define main node type for networks
+\tikzstyle{lnode2} = [%
+  rectangle,
+  rounded corners=5pt,
+  draw=black,
+  minimum height=0.65cm,
+  align=center,
+  fill=tbBlue,
+  fill opacity=0.5,
+  text opacity=1.0,
+  text centered,
+  text=black,
+  inner sep=0.5pt,
+  font=\tiny
+]%
+\tikzstyle{lnodeB} = [%
+  rectangle,
+  rounded corners=5pt,
+  draw=white,
+  minimum height=0.65cm,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text opacity=1.0,
+  text centered,
+  text=white,
+  inner sep=0.5pt,
+  font=\tiny
+]%
+
+% Define colour palette from (https://personal.sron.nl/~pault/#sec:qualitative)
+\definecolor{tbBlue}{HTML}{0077BB}
+\definecolor{tbCyan}{HTML}{33BBEE}
+\definecolor{tbTeal}{HTML}{009988}
+\definecolor{tbOrange}{HTML}{EE7733}
+\definecolor{tbRed}{HTML}{CC3311}
+\definecolor{tMagenta}{HTML}{EE3377}
+\definecolor{tbGray}{HTML}{BBBBBB}
+
+\begin{document}
+  \begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+      \caption{}
+      \centering
+      \sffamily
+      \vspace*{-1.0em}
+      \scalebox{0.75}{\input{input-example-1-network.tex}}\\  %https://www.kegg.jp/pathway/rn00330
+      \vspace*{-0.5em}
+      \scalebox{0.75}{\input{input-example-1-efms.tex}}
+    \end{subfigure}\hfill%
+    \begin{subfigure}[t]{0.5\textwidth}
+      \caption{}
+      \centering
+      \sffamily
+      \vspace*{-1.0em}
+      \scalebox{0.75}{\input{input-example-2-network.tex}}\\ % https://www.genome.jp/pathway/map00670
+      \vspace*{-0.5em}
+      \scalebox{0.75}{\input{input-example-2-efms.tex}}
+    \end{subfigure}
+  \end{figure}
+\end{document}
+

@@ -1,0 +1,118 @@
+\begin{tikzpicture}[%
+    >=latex,
+    decoration={%
+      markings,
+      mark=at position 1.0 with {\arrow{>}}
+    },
+    every node/.style={%
+      font=\sffamily\footnotesize\itshape,
+      text=gray,
+      text centered,
+      align=center
+    },
+    frame/.style={draw=black,inner sep=2pt}
+  ]
+
+  \node[black, font=\sffamily\footnotesize] (t1) {EFMs};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of t1.west, anchor=west]
+    (t2)
+    {1. $\rightarrow$ 1 $\rightarrow$ 2 $\rightarrow$ 3 $\rightarrow$ 4 $\rightarrow$ 6 $\rightarrow$};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of t2.west, anchor=west]
+    (t3)
+    {2. $\rightarrow$ 1 $\rightarrow$ 2 $\rightarrow$ 3 $\rightarrow$ 5 $\rightarrow$ 6 $\rightarrow$};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of t3.west, anchor=west]
+    (t4)
+    {3. $\rightarrow$ 1 $\rightarrow$ 3 $\rightarrow$ 4 $\rightarrow$ 6 $\rightarrow$};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of t4.west, anchor=west]
+    (t5)
+    {4. $\rightarrow$ 1 $\rightarrow$ 3 $\rightarrow$ 5 $\rightarrow$ 6 $\rightarrow$};
+
+  \node[black, font=\sffamily\footnotesize, right=3.9cm of t1] (u1) {Example weights\textcolor{white}{ss}};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1, anchor=south]
+    (u2)
+    {\textcolor{white}{Example weightsss}};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2, anchor=south]
+    (u3)
+    {\textcolor{white}{Example weightsss}};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3, anchor=south]
+    (u4)
+    {\textcolor{white}{Example weightsss}};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1.west, anchor=west]
+    (a1)
+    {2};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1.west, anchor=west,xshift=0.45cm]
+    (a2)
+    {0};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1.west, anchor=west,xshift=0.9cm]
+    (a3)
+    {1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1.east, anchor=east,xshift=-0.6cm]
+    (a4)
+    {1.1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u1.east, anchor=east,xshift=0cm]
+    ()
+    {1.5};
+
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2.west, anchor=west]
+    ()
+    {0};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2.west, anchor=west,xshift=0.45cm] ()
+    {2};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2.west, anchor=west,xshift=0.9cm]
+    ()
+    {1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2.east, anchor=east,xshift=-0.6cm]
+    ()
+    {0.9};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u2.east, anchor=east,xshift=0cm]
+    ()
+    {0.5};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3.west, anchor=west]
+    ()
+    {2};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3.west, anchor=west,xshift=0.45cm]
+    ()
+    {0};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3.west, anchor=west,xshift=0.9cm]
+    ()
+    {1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3.east, anchor=east,xshift=-0.6cm]
+    ()
+    {1.1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u3.east, anchor=east,xshift=0cm]
+    ()
+    {1.5};
+
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u4.west, anchor=west]
+    (b1)
+    {0};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u4.west, anchor=west,xshift=0.45cm]
+    (b2)
+    {2};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u4.west, anchor=west,xshift=0.9cm]
+    (b3)
+    {1};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u4.east, anchor=east,xshift=-0.6cm]
+    (b4)
+    {0.9};
+  \node[black, font=\sffamily\footnotesize, below=0.4cm of u4.east, anchor=east,xshift=0cm]
+    ()
+    {0.5};
+
+  % Vertical bars
+  \node[black, right=0.1cm of a1, xshift=-2.0mm,yshift=+1.5mm] (l1) {};
+  \node[black, right=0.1cm of b1, xshift=-2.0mm,yshift=-1.5mm] (m1) {};
+  \draw[black] (l1.center) to (m1.center);
+  \node[black, right=0.1cm of a2, xshift=-2.0mm,yshift=+1.5mm] (l2) {};
+  \node[black, right=0.1cm of b2, xshift=-2.0mm,yshift=-1.5mm] (m2) {};
+  \draw[black] (l2.center) to (m2.center);
+  \node[black, right=0.1cm of a3, xshift=-2.0mm,yshift=+1.5mm] (l3) {};
+  \node[black, right=0.1cm of b3, xshift=-2.0mm,yshift=-1.5mm] (m3) {};
+  \draw[black] (l3.center) to (m3.center);
+  \node[black, right=0.1cm of a4, xshift=-2.0mm,yshift=+1.5mm] (l4) {};
+  \node[black, right=0.1cm of b4, xshift=-2.0mm,yshift=-1.5mm] (m4) {};
+  \draw[black] (l4.center) to (m4.center);
+
+
+\end{tikzpicture}
+

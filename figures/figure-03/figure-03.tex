@@ -1,0 +1,236 @@
+\documentclass[varwidth,border=0pt]{standalone}
+
+% Tikz packages
+\usepackage{tikz}
+\usetikzlibrary{%
+  patterns, plotmarks, backgrounds, shapes, arrows, calc, trees, positioning,
+  chains, shapes.geometric, decorations.pathreplacing,
+  decorations.pathmorphing, shapes.arrows, decorations.markings, quotes,
+  arrows.meta, spy, fit, matrix
+}
+\tikzset{%
+  hexagon/.style={signal,signal to=east and west}
+}
+
+% General image and colour support
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Captions and subcaptions
+\usepackage{caption}
+\usepackage[labelformat=parens]{subcaption}
+\renewcommand\thesubfigure{\alph{subfigure})}
+
+% String macros (for reading in tabular data)
+\usepackage{xstring}
+
+%% Define node types
+\tikzstyle{lnode} = [%
+  circle,
+  draw=black,
+  minimum height=0.65cm,
+  align=center,
+  fill=none,
+  text centered,
+  inner sep=0.5pt,
+  font=\tiny
+]%
+\tikzstyle{rx1} = [%
+  circle,
+  draw=black,
+  minimum height=0.20cm,
+  align=center,
+  fill=tbTeal,
+  fill opacity=1.0,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{rx1Blank} = [%
+  circle,
+  draw=black,
+  minimum height=0.20cm,
+  anchor=center,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text=white,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{rx1White} = [%
+  circle,
+  draw=white,
+  minimum height=0.20cm,
+  anchor=center,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text=white,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{rx2} = [%
+  circle,
+  draw=black,
+  minimum height=0.20cm,
+  align=center,
+  fill=tbMagenta,
+  fill opacity=1.0,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{rx2Blank} = [%
+  circle,
+  draw=black,
+  minimum height=0.20cm,
+  anchor=center,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text=white,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{rx2White} = [%
+  circle,
+  draw=white,
+  minimum height=0.20cm,
+  anchor=center,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text=white,
+  text centered,
+  inner sep=0.5pt,
+  thin,
+  font=\small
+]%
+\tikzstyle{met} = [%
+  rectangle,
+  rounded corners=3pt,
+  minimum height=0.5cm,
+  minimum width=1.0cm,
+  align=center,
+  fill=tbBlue,
+  fill opacity=0.5,
+  text opacity=1.0,
+  draw=black,
+  text centered,
+  inner sep=0.5pt,
+  font=\small
+]%
+\tikzstyle{metWhite} = [%
+  rectangle,
+  rounded corners=3pt,
+  minimum height=0.5cm,
+  minimum width=1.0cm,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text opacity=1.0,
+  text=white,
+  draw=white,
+  text centered,
+  inner sep=0.5pt,
+  font=\small
+]%
+\tikzstyle{metBlank} = [%
+  rectangle,
+  rounded corners=3pt,
+  minimum height=0.5cm,
+  minimum width=1.0cm,
+  align=center,
+  fill=none,
+  fill opacity=1.0,
+  text opacity=1.0,
+  draw=white,
+  text=white,
+  text centered,
+  inner sep=0.5pt,
+  font=\small
+]%
+\tikzstyle{enz} = [%
+  hexagon,
+  draw=black,
+  minimum height=0.5cm,
+  minimum width=0.75cm,
+  align=center,
+  fill=tbOrange,
+  fill opacity=0.5,
+  text opacity=1.0,
+  text centered,
+  inner sep=0.0pt,
+  font=\small
+]
+\tikzstyle{enzWhite} = [%
+  hexagon,
+  draw=white,
+  minimum height=0.5cm,
+  minimum width=0.75cm,
+  align=center,
+  fill=white,
+  fill opacity=1.0,
+  text opacity=1.0,
+  text=white,
+  text centered,
+  inner sep=0.0pt,
+  font=\small
+]
+\tikzstyle{enzBlank} = [%
+  hexagon,
+  draw=black,
+  minimum height=0.5cm,
+  minimum width=0.75cm,
+  align=center,
+  fill=none,
+  fill opacity=1.0,
+  text opacity=1.0,
+  draw=white,
+  text=white,
+  text centered,
+  inner sep=0.0pt,
+  font=\small
+]
+
+% Define colour palette from (https://personal.sron.nl/~pault/#sec:qualitative)
+% Figure 3 - 7 colour palette
+\definecolor{tbBlue}{HTML}{0077BB}
+\definecolor{tbCyan}{HTML}{33BBEE}
+\definecolor{tbTeal}{HTML}{009988}
+\definecolor{tbOrange}{HTML}{EE7733}
+\definecolor{tbRed}{HTML}{CC3311}
+\definecolor{tbMagenta}{HTML}{EE3377}
+\definecolor{tbGray}{HTML}{BBBBBB}
+% Figure 4 - 10 colour palette
+\definecolor{mIndigo}{HTML}{332288}
+\definecolor{mCyan}{HTML}{88CCEE}
+\definecolor{mTeal}{HTML}{44AA99}
+\definecolor{mGreen}{HTML}{117733}
+\definecolor{mOlive}{HTML}{999933}
+\definecolor{mSand}{HTML}{DDCC77}
+\definecolor{mRose}{HTML}{CC6677}
+\definecolor{mWine}{HTML}{882255}
+\definecolor{mPurple}{HTML}{AA4499}
+\definecolor{mGray}{HTML}{DDDDDD}
+
+\begin{document}
+  \begin{figure}
+    \centering
+    \sffamily
+    \begin{subfigure}{1.0\textwidth}
+      \scalebox{0.35}{\input{input-sphingo-model.tex}}
+    \end{subfigure}
+  \end{figure}
+\end{document}
+
+

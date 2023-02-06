@@ -1,0 +1,62 @@
+\begin{tikzpicture}[%
+  cartoon/.style={%
+    {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
+    line width=1.5pt
+  },
+  every node/.style={%
+    %font=\sffamily\footnotesize\itshape,
+    font=\sffamily\footnotesize,
+    text=black,
+    text centered,
+    align=center
+  },
+  frame/.style={draw=black,inner sep=2pt}
+]
+
+  % Nodes
+  \node[lnodeB] (A1) {L-Glutamate\\(1)};
+  \node[below=1.0cm of A1] (P1) {};
+  \node[lnodeB,text=black,right=1.5cm of P1,anchor=center] (A2) {L-Glutamyl 5-phosphate\\(2)};
+  \node[lnodeB,below=1.0cm of P1] (A3) {L-Glutamate 5-semialdehyde\\(3)};
+  \node[below=1.0cm of A3] (P2) {};
+  \node[lnodeB,left=1.5cm of P2,anchor=center] (A4) {(S)-1-Pyrroline-5-carboxylate\\(4)};
+  \node[lnodeB,right=1.5cm of P2,anchor=center] (A5) {L-Ornithine\\(5)};
+  \node[lnodeB,below=1.0cm of P2] (A6) {L-Proline\\(6)};
+  \node[above=0.5cm of A1] (Y1) {};
+  \node[below=0.5cm of A6] (Y2) {};
+
+  % Intra-node edges
+  \draw[postaction={decorate},cartoon] (A1) to [bend right=45] node [left=0.1pt,yshift=-0pt] {2} (A3);
+  \draw[cartoon] (A1.center) to node [above right=0.1pt,yshift=-5pt,xshift=+6pt] {2} (A2);
+  \draw[cartoon] (A2.center) to node [below right=0.1pt,xshift=-5pt] {2} (A3);
+  \draw[cartoon] (A3.center) to node [above left=0.1pt,yshift=-5pt,xshift=-6pt] {2} (A4);
+  \draw[cartoon] (A3.center) to node [above right=0.1pt,yshift=-5pt,xshift=+6pt] {2} (A5);
+  \draw[cartoon] (A4.center) to node [below left=0.1pt,xshift=+5pt] {2} (A6);
+  \draw[cartoon] (A5.center) to node [below right=0.1pt,xshift=-5pt] {2} (A6);
+
+  % Boundary edges
+  \draw[cartoon] (Y1.center) to node [left,yshift=5pt] {4} (A1.north);
+  \draw[cartoon] (A6.center) to node [left] {4} (Y2.center);
+
+  % Nodes
+  \node[lnodeB] (A1) {L-Glutamate\\(1)};
+  \node[below=1.0cm of A1] (P1) {};
+  \node[lnodeB,text=black,right=1.5cm of P1,anchor=center] (A2) {L-Glutamyl 5-phosphate\\(2)};
+  \node[lnodeB,below=1.0cm of P1] (A3) {L-Glutamate 5-semialdehyde\\(3)};
+  \node[below=1.0cm of A3] (P2) {};
+  \node[lnodeB,left=1.5cm of P2,anchor=center] (A4) {(S)-1-Pyrroline-5-carboxylate\\(4)};
+  \node[lnodeB,right=1.5cm of P2,anchor=center] (A5) {L-Ornithine\\(5)};
+  \node[lnodeB,below=1.0cm of P2] (A6) {L-Proline\\(6)};
+  \node[above=0.5cm of A1] (Y1) {};
+  \node[below=0.5cm of A6] (Y2) {};
+
+  \node[lnode2] (A1) {L-Glutamate\\(1)};
+  \node[lnode2,right=1.5cm of P1,anchor=center] (A2) {L-Glutamyl 5-phosphate\\(2)};
+  \node[lnode2,below=1.0cm of P1] (A3) {L-Glutamate 5-semialdehyde\\(3)};
+  \node[lnode2,left=1.5cm of P2,anchor=center] (A4) {(S)-1-Pyrroline-5-carboxylate\\(4)};
+  \node[lnode2,right=1.5cm of P2,anchor=center] (A5) {L-Ornithine\\(5)};
+  \node[lnode2,below=1.0cm of P2] (A6) {L-Proline\\(6)};
+  \node[rectangle,width=0.1cm,fill=white,above=0.60cm of A1] (Z) {};
+
+\end{tikzpicture}
+

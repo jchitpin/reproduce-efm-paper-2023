@@ -1,0 +1,99 @@
+\documentclass[varwidth,border=0pt]{standalone}
+
+% Tikz packages
+\usepackage{tikz}
+\usetikzlibrary{%
+  patterns, plotmarks, backgrounds, shapes, arrows, calc, trees, positioning,
+  chains, shapes.geometric, decorations.pathreplacing,
+  decorations.pathmorphing, shapes.arrows, decorations.markings, quotes,
+  arrows.meta, spy, fit, matrix, pgfplots.groupplots
+}
+\usepackage{pgfplotstable}
+\usetikzlibrary{pgfplots.groupplots}
+
+% General includegraphics and colour support
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Captions and subcaptions
+\usepackage{caption}
+\usepackage[labelformat=parens]{subcaption}
+
+% String macros (for reading in tabular data)
+\usepackage{xstring}
+
+% PGFPlots
+\pgfplotsset{%
+  compat=newest,
+  plot coordinates/math parser=false
+}
+%% Define node types
+\tikzstyle{lnode} = [%
+  circle,
+  draw=black,
+  minimum height=0.65cm,
+  align=center,
+  fill=none,
+  text centered,
+  inner sep=0.5pt,
+  font=\tiny
+]%
+
+\renewcommand\thesubfigure{\sffamily\alph{subfigure})}
+
+% Define colour palette from (https://personal.sron.nl/~pault/#sec:qualitative)
+\definecolor{tbBlue}{HTML}{0077BB}
+\definecolor{tbCyan}{HTML}{33BBEE}
+\definecolor{tbTeal}{HTML}{009988}
+\definecolor{tbOrange}{HTML}{EE7733}
+\definecolor{tbRed}{HTML}{CC3311}
+\definecolor{tbMagenta}{HTML}{EE3377}
+\definecolor{tbGray}{HTML}{BBBBBB}
+
+
+\pgfplotsset{
+    discard if/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    },
+    discard if not/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+            \else
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    }
+}
+
+\begin{document}
+
+  \begin{figure}
+    \sffamily
+    \vspace*{-0.35cm}
+    \begin{subfigure}[t]{0.33\textwidth}
+      \caption{}
+      \centering
+      \scalebox{0.46}{\input{scatterplot-wildtype.tex}}
+    \end{subfigure}\hfill%
+    \begin{subfigure}[t]{0.33\textwidth}
+      \caption{}
+      \centering
+      \scalebox{0.46}{\input{scatterplot-disease.tex}}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.33\textwidth}
+      \caption{}
+      \centering
+      \scalebox{0.46}{\input{scatterplot-fc.tex}}
+    \end{subfigure}
+  \end{figure}
+
+\end{document}
+

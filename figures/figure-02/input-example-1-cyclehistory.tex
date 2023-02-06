@@ -1,0 +1,77 @@
+\begin{tikzpicture}[%
+  %>=latex,
+  cartoon/.style={%
+    {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
+    %line width=1.5pt
+    line width=1.0pt
+  },
+  decoration={%
+    markings,
+    %mark=at position 1.0 with {\arrow{>}}
+    mark=at position 1.0 with {Stealth}
+  },
+  every node/.style={%
+    %font=\sffamily\footnotesize\itshape,
+    font=\sffamily\footnotesize,
+    text=black,
+    text centered,
+    align=center
+  },
+  frame/.style={draw=black,inner sep=2pt}
+]
+
+  % Nodes
+  \node[lnode] (A1) {State 1\\Mets.\\1};
+  \node[lnode,below=1.0cm of A1,xshift=-2.5cm] (A2) {State 2\hphantom{0}\\Mets.\\1,2};
+  \node[lnode,draw=white,fill=none,below=1.0cm of A1,xshift=+2.5cm] (A3) {\hphantom{State 40}\\\hphantom{Mets.}\\\hphantom{1,3}};
+  \node[lnode,below=0.5cm of A2] (A42) {State 3\hphantom{0}\\Mets.\\1,2,3};
+  \node[lnode,below=0.58cm of A3] (A43) {State 4\hphantom{0}\\Mets.\\1,3,4};
+  \node[lnode,below=0.5cm of A42,xshift=-1.0cm] (A52) {State 5\hphantom{0}\\Mets.\\1,2,3,4};
+  \node[lnode,below=0.5cm of A42,xshift=+1.0cm] (A62) {State 6\hphantom{0}\\Mets.\\1,2,3,5};
+  \node[lnode,below=0.5cm of A43,xshift=-1.0cm] (A53) {State 7\hphantom{0}\\Mets.\\1,3,4,5};
+  \node[lnode,below=0.5cm of A43,xshift=+1.0cm] (A63) {State 8\hphantom{0}\\Mets.\\1,3,4,6};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A52,text=white,draw=white] (A752) {State 9\hphantom{0}\\Mets.\\1,2,4,5,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A62,text=white,draw=white] (A762) {State 10\\Mets.\\1,2,4,6,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A53,text=white,draw=white] (A753) {State 11\\Mets.\\1,3,4,5,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A63,text=white,draw=white] (A763) {State 12\\Mets.\\1,3,4,6,7};
+  \node[left=0.1cm of A752,yshift=2.5cm,xshift=+0.2cm] (X1) {};
+  \node[right=0.1cm of A763,yshift=2.5cm,xshift=-0.2cm] (X2) {};
+  \node[left=0.6cm of A2] () {1};
+  \node[right=0.6cm of A3] () {1};
+
+  % Intra-node edges
+  \draw[cartoon] (A1) to node [above left=0.1pt,yshift=-5pt] {1/2} (A2);
+
+  \draw[cartoon] (A2) to node [left=0.1pt,yshift=+1pt] {1} (A42);
+  \draw[cartoon] (A42) to node [above left=0.1pt,yshift=-1pt] {1/2} (A52);
+  \draw[cartoon] (A42) to node [above right=0.1pt,yshift=-1pt] {1/2} (A62);
+  \draw[cartoon] (A52) to node [right=0.1pt,yshift=+1pt] {1} (A752);
+  \draw[cartoon] (A62) to node [left=0.1pt,yshift=+1pt] {1} (A762);
+  \draw[cartoon,postaction={decorate}] (A1.320) to node[above right=0.1pt,xshift=-4pt] {1/2} (A43.north);
+  \draw[cartoon] (A43) to node [above left=0.1pt,yshift=-1pt] {1/2} (A53);
+  \draw[cartoon] (A43) to node [above right=0.1pt,yshift=-1pt] {1/2} (A63);
+  \draw[cartoon] (A53) to node [right=0.1pt,yshift=+1pt] {1} (A753);
+  \draw[cartoon] (A63) to node [left=0.1pt,yshift=+1pt] {1} (A763);
+
+  % Boundary edges
+  \draw[cartoon,postaction={decorate},tbTeal,rounded corners=30pt] (A752.center) -| (X1.center) |- (A1);
+  \draw[cartoon,postaction={decorate},tbTeal,rounded corners=30pt] (A763.center) -| (X2.center) |- (A1);
+
+  \draw[cartoon,postaction={decorate},tbTeal,bend right=10] (A762.70) to node [left=0.1pt,yshift=+1pt] {1} (A1.257);
+  \draw[cartoon,postaction={decorate},tbTeal,bend left=10] (A753.110) to node [right=0.1pt,yshift=+1pt] {1} (A1.283);
+
+
+  % Overlay nodes again to cover dashed arrow spillage
+  \node[circle,fill=white,fill opacity=1.0,minimum width=0.5cm,below=0.5cm of A52,xshift=+0.5cm] () {}; % hide extra dashed arrow spillage
+  \node[circle,fill=white,fill opacity=1.0,minimum width=0.5cm,below=0.5cm of A63,xshift=-0.5cm] () {}; % hide extra dashed arrow spillage
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A52,text=white,draw=white] (A752) {State 9\hphantom{0}\\Mets.\\1,2,4,5,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A62,text=white,draw=white] (A762) {State 10\\Mets.\\1,2,4,6,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A53,text=white,draw=white] (A753) {State 11\\Mets.\\1,3,4,5,7};
+  \node[lnode,fill=white,fill opacity=1.0,below=0.5cm of A63,text=white,draw=white] (A763) {State 12\\Mets.\\1,3,4,6,7};
+  \node[lnode,below=0.5cm of A52] (A752) {State 9\hphantom{0}\\Mets.\\1,2,4,5,7};
+  \node[lnode,below=0.5cm of A62] (A762) {State 10\\Mets.\\1,2,4,6,7};
+  \node[lnode,below=0.5cm of A53] (A753) {State 11\\Mets.\\1,3,4,5,7};
+  \node[lnode,below=0.5cm of A63] (A763) {State 12\\Mets.\\1,3,4,6,7};
+
+\end{tikzpicture}
+

@@ -1,0 +1,95 @@
+\usetikzlibrary{pgfplots.groupplots}
+
+% override style for non-boxed plots which is the case for both sub-plots
+\pgfplotsset{every non boxed x axis/.style={}}
+\pgfplotsset{%
+  mystyle/.style={%
+    scatter, only marks, scatter src=explicit symbolic,
+    mark size=2, scatter/classes={%
+      Markov={mark=diamond*,   fill=tbOrange,  fill opacity=1.0, mark size=3},
+      L2_norm={mark=square*,   fill=tbBlue,    fill opacity=1.0},
+      qp_max_spa={mark=square*,fill=tbCyan,    fill opacity=1.0},
+      lp_max_spa={mark=square*,fill=tbTeal,    fill opacity=1.0},
+      lp_min_spa={mark=square*,fill=tbRed,     fill opacity=1.0},
+      milp={mark=square*,      fill=tbMagenta, fill opacity=1.0}
+    }
+  }
+}
+\pgfplotstableread[col sep=tab]{../../data/barplot-zero-weight-freq-wt.csv}\mydata
+
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={%
+      group name=wildtype,
+      group size=1 by 2,
+      xticklabels at=edge bottom,
+      vertical sep=0pt
+    },
+    width=8.5cm,
+    xmin=0,
+    xmax=56
+  ]
+
+    \nextgroupplot[%
+      xmajorticks=false,
+      axis x line=top,
+      ymin=-10,
+      ymax=0,
+      ytick={-9, -6, -3, 0},
+      ytick pos=left,
+      %axis y discontinuity=parallel,
+      ylabel = {EFM weight ($\log_{10}$)},
+      title style={yshift=-5.5ex},
+      ylabel shift={-6 pt},
+      title={\textbf{Wildtype}},
+      legend style={at={(1.001,0.2345)},anchor=east, font=\small},
+      legend cell align={left}
+      %height=4.5cm
+    ]
+      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0] {../../data/scatterplot-total-efm-weights-wt-log.csv};
+      \legend{Markov, Min L2 (2), Max qSPA (2), Max lSPA (8), Min lSPA (8), Min milAP (1)};
+      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0,discard if not={class}{Markov}] {../../data/scatterplot-total-efm-weights-wt-log.csv};
+
+    \nextgroupplot[%
+      %yshift=-1cm,
+      ybar stacked,
+      bar width=3.5pt,
+      ymin=0,
+      ymax=1,
+      xtick pos=left,
+      ytick pos=left,
+      xmin=-0.5,
+      xtick={0, 10, 20, 30, 40, 50},
+      ytick={0, 1.0},
+      height=3.0cm,
+      xlabel={EFM indices sorted by wildtype Markov solution},
+      xlabel style={font=\small},
+      ylabel={Zero weight (\%)},
+      ylabel style={text width=2.5cm, text centered},
+      ylabel shift={2 pt},
+      set layers,
+      extra y ticks=0.32,
+      extra y tick labels={{}},
+      %major tick length=0,
+      extra y tick style={%
+        ymajorgrids=true,
+        grid style={%
+          black,
+          semithick,
+          dashed,
+          /pgfplots/on layer=axis foreground,
+        }
+      }
+    ]
+
+      \addplot [fill=tbBlue] table [y=S1, meta=Label, x expr=\coordindex]{\mydata};
+      \addplot [fill=tbCyan] table [y=S2, meta=Label, x expr=\coordindex]{\mydata};
+      \addplot [fill=tbTeal] table [y=S3, meta=Label, x expr=\coordindex]{\mydata};
+      \addplot [fill=tbRed] table [y=S4, meta=Label, x expr=\coordindex]{\mydata};
+      \addplot [fill=tbMagenta] table [y=S5, meta=Label, x expr=\coordindex]{\mydata};
+
+  \end{groupplot}
+
+  \pgfresetboundingbox\path (wildtype c1r1.outer north east) rectangle (wildtype c1r2.outer south west); % adjust to fit
+\end{tikzpicture}
+

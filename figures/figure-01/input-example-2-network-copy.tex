@@ -1,0 +1,75 @@
+\begin{tikzpicture}[%
+  cartoon/.style={%
+    {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
+    line width=1.5pt
+  },
+  every node/.style={%
+    %font=\sffamily\footnotesize\itshape,
+    font=\sffamily\footnotesize,
+    text=black,
+    text centered,
+    align=center
+  },
+  frame/.style={draw=black,inner sep=2pt}
+]
+
+  % Nodes
+  \node[lnode2] (A1) {5,6,7,8-Tetrahydrofolate (THF)\\(1)};
+  \node[below=1.0cm of A1] (P1) {};
+  \node[lnode2,text=black,left=1.0cm of P1,xshift=1.13cm,anchor=center] (A2) {10-Formyl-THF\\(2)};
+  \node[lnode2,below=1.0cm of P1] (A3) {5,10-Methenyl-THF\\(3)};
+  \node[below=1.0cm of A4] (P2) {};
+  \node[lnode2,left=1.0cm of P2,xshift=1.13cm,anchor=center] (A6) {5,10-Methylene-THF\\(6)};
+  \node (P3) at ($(A3)!0.5!(A6)$) {};
+  \node[lnode2,left=1.25cm of P3] (A4) {5-Formimino-THF\\(4)};
+  \node[lnode2,right=1.25cm of P3] (A5) {5-Formyl-THF\\(5)};
+  \node[lnode2,below=1.12cm of A6,anchor=center] (A7) {5-Methyl-THFO\\(7)};
+  \node[left=0.1cm of A4] (X1) {};
+  \node[left=0.3cm of A4] (X2) {};
+  \node[right=0.1cm of A5,yshift=1.0cm] (X3) {};
+  \node[right=0.3cm of A5,yshift=1.0cm] (X4) {};
+  \node[above=0.5cm of A1] (Y1) {};
+  \node[below=0.5cm of A7] (Y2) {};
+
+  % Intra-node edges
+  \draw[postaction={decorate},cartoon] (A1.center) to [bend right=40] node [right=0.1pt,yshift=-2pt] {} (A2);
+  \draw[postaction={decorate},cartoon] (A2.center) to [bend right=40] node [left=0.1pt,yshift=+2pt] {} (A1);
+  \draw[postaction={decorate},cartoon] (A2.center) to [bend right=40] node [right=0.1pt,yshift=-2pt] {} (A3);
+  \draw[postaction={decorate},cartoon] (A3.center) to [bend right=40] node [left=0.1pt,yshift=+2pt] {} (A2);
+  \draw[postaction={decorate},cartoon] ([xshift=0.4cm]A3.center) to [bend right=40] node [right=0.1pt,yshift=-2pt] {} (A5);
+  \draw[postaction={decorate},cartoon] ([xshift=-0.1cm]A5.center) to [bend right=40] node [left=0.1pt,yshift=+2pt] {} ([yshift=0.2cm]A3.east);
+  \draw[postaction={decorate},cartoon] (A3.center) to [bend right=40] node [right=0.1pt,yshift=-2pt] {} ([xshift=0.1cm]A4.north);
+  \draw[postaction={decorate},cartoon] (A4.center) to [bend right=40] node [left=0.1pt,yshift=+2pt] {} ([xshift=-0.4cm]A3.south);
+  \draw[postaction={decorate},cartoon] (A3.center) to [bend right=40] node [right=0.1pt,yshift=-2pt] {} (A6);
+  \draw[postaction={decorate},cartoon] (A6.center) to [bend right=40] node [left=0.1pt,yshift=+2pt] {} (A3);
+  \draw[postaction={decorate},cartoon] (A6.center) to node [right=0.1pt,yshift=-2pt] {} (A7);
+
+  \draw[cartoon,rounded corners=15pt] ([xshift=-0.4cm]A3.center) to [bend left=40] node [] {} ([xshift=-0.4cm]A1.south);
+
+  \draw[cartoon,rounded corners=15pt] (A4.center) |- ([yshift=-0.25cm]A1.west);
+  \draw[cartoon,rounded corners=15pt] ([yshift=-0.05cm]A1.center) -| ([xshift=-0.2cm]A4.north);
+  \draw[cartoon,rounded corners=15pt] ([xshift=-0.1cm]A5.center) |- (A2.east);
+  \draw[cartoon,rounded corners=15pt] (A5.center) |- ([yshift=-0.25cm]A1.east);
+  \draw[cartoon,rounded corners=15pt] ([yshift=+0.025cm]A1.center) -| (X1.center) |- ([yshift=0.4cm]A7);
+  \draw[cartoon,rounded corners=15pt] ([yshift=-0.1cm]A7.center) -| (X2.center) |- ([yshift=0.55cm]A1);
+  \draw[cartoon,rounded corners=15pt] ([yshift=+0.025cm]A1.center) -| (X3.center) |- ([yshift=0.4cm]A6);
+  \draw[cartoon,rounded corners=15pt] ([yshift=-0.1cm]A6.center) -| (X4.center) |- ([yshift=0.5cm]A1);
+
+
+  % Boundary edges
+  \draw[cartoon,white] (Y1.center) to node [left,yshift=5pt] {} (A1.north);
+  \draw[cartoon,white] (A7.center) to node [left] {} (Y2.center);
+
+  % Nodes
+  \node[lnode2] (A1) {5,6,7,8-Tetrahydrofolate (THF)\\(1)};
+  \node[lnode2,text=black,left=1.0cm of P1,xshift=1.13cm,anchor=center] (A2) {10-Formyl-THF\\(2)};
+  \node[lnode2,below=1.0cm of P1] (A3) {5,10-Methenyl-THF\\(3)};
+  \node[lnode2,left=1.0cm of P2,xshift=1.13cm,anchor=center] (A6) {5,10-Methylene-THF\\(6)};
+  \node[lnode2,left=1.25cm of P3] (A4) {5-Formimino-THF\\(4)};
+  \node[lnode2,right=1.25cm of P3] (A5) {5-Formyl-THF\\(5)};
+  \node[lnode2,below=1.12cm of A6,anchor=center] (A7) {5-Methyl-THFO\\(7)};
+  \node[square,width=0.1cm,fill=white,above=0.60cm of A1] (Z) {};
+
+\end{tikzpicture}
+
+
