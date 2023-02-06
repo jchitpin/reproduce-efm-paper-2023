@@ -30,8 +30,8 @@ Download the repository and install all necessary Julia packages by running the
 following commands in your desired installation directory.
 
 1. `$ cd /home/<username>/<directory>/`  
-2. `$ git clone jchitpin/reproduce-efm-paper-2022`  
-3. `$ cd reproduce-efm-paper-2022/src/`  
+2. `$ git clone jchitpin/reproduce-efm-paper-2023`  
+3. `$ cd reproduce-efm-paper-2023/src/`  
 4. `$ julia install-julia-packages.jl # or run line by line in Julia REPL`
 
 
@@ -39,7 +39,7 @@ following commands in your desired installation directory.
 
 The scripts in the following subsections should be run in order to regenerate
 the intermediate data files. All scripts should be run in their current working
-directory (`reproduce-efm-paper-2022/src/`).
+directory (`reproduce-efm-paper-2023/src/`).
 
 ### Figure 1 and 2
 
