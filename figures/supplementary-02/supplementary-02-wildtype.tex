@@ -1,0 +1,83 @@
+\documentclass[varwidth,border=0pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usepackage{caption}
+\usepackage[labelformat=parens]{subcaption}
+
+\begin{document}
+
+\begin{figure}[h]
+
+\pgfplotstableread[col sep=comma]{../../data/error-wt-tot.csv}\mydata
+
+  \begin{tikzpicture}
+
+  \begin{axis}[%
+    ybar=0pt,
+    bar width=4.4pt,
+    width=12cm,
+    height=9cm,
+    title style={yshift=-5.5ex},
+    title={\textbf{Wildtype}},
+    xmin=0.55,
+    ymin=0,
+    ymax=20,
+    ytick={0, 5, 10, 15, 20},
+    xlabel={Method},
+    ylabel={Precision ($-\log_{10}\left|\sum{Aw} - \sum{v}\right|$)},
+    xtick={1, 2, 3, 4, 5, 6},
+    ticklabel style={font=\small},
+    xtick pos=left,
+    ytick pos=left,
+    xticklabels = {%
+      Markov,
+      Min L2,
+      Max qSPA,
+      Max lSPA,
+      Min lSPA,
+      Min milAP,
+    },
+    major x tick style = {opacity=0},
+    every node near coord/.append style={%
+      anchor=west,
+      rotate=90,
+      font=\tiny
+    },
+    %extra y ticks=15.35,
+    extra y tick labels={{}},
+    extra y tick style={%
+      ymajorgrids=true,
+      grid style={%
+        black,
+        semithick,
+        dashed,
+        /pgfplots/on layer=axis foreground
+      }
+    },
+    legend entries={Markov, COSMO, OSQP, Gurobi, SCIP, CDDLib, ECOS, GLPK, ProxSDP, Tulip},
+    legend columns=2,
+    legend cell align={left},
+    legend style={legend pos=north west, font=\tiny},
+  ]
+
+  \addplot[draw=black,fill=black, nodes near coords] table[x index=0,y index=1] \mydata; % Markov
+  \addplot[draw=black,fill=white, nodes near coords] table[x index=0,y index=2] \mydata; % COSMO solver
+  \addplot[draw=black,fill=white, nodes near coords] table[x index=0,y index=3] \mydata; % OSQP solver
+  \addplot[draw=black,fill=white!25!black, nodes near coords] table[x index=0,y index=4] \mydata; % Gurobi
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=5] \mydata; % SCIP solver
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=6] \mydata; % CDDLib solver
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=7] \mydata; % ECOS solver
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=8] \mydata; % GLPK solver
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=9] \mydata; % ProxSDP solver
+  \addplot[draw=black,fill=white!75!black, nodes near coords] table[x index=0,y index=10] \mydata; % Tulip solver
+
+  %\node[black,text width=6.0cm,font=\tiny\linespread{1.0}\selectfont] at (3.2,16.00) {Markov precision\\= 15.35};
+
+  \end{axis}
+
+  \end{tikzpicture}
+
+\end{figure}
+
+\end{document}

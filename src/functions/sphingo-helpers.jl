@@ -182,22 +182,13 @@ end
 
 function compare_efms(#
   matlab::Matrix{Int64},
-  julia::Vector{Vector{Int64}},
+  julia::Vector{Vector{Int16}},
   S::Matrix{<:Real}
 )
   efms_matlab = reshape_efm_matrix(matlab, S)
-  efms_matlab = [efms_matlab[i][2:end] for i in 1:length(efms_matlab)]
-  efms_julia = [julia[i][2:end] for i in 1:length(julia)]
 
-  efms_matlab = Set.(efms_matlab)
-  efms_julia = Set.(julia)
-
-  print("FluxModeCalculator reports $(length(efms_matlab)) EFMs. ")
-  print("$(length(unique(efms_matlab))) of those EFMs are unique.\n")
-  print("ElementaryFluxModes.jl reports $(length(efms_julia)) EFMs. ")
-  print("$(length(unique(efms_julia))) of those EFMs are unique.\n")
-
-  return findall(in(efms_matlab), efms_julia)
+  print("FluxModeCalculator reports $(length(efms_matlab)) EFMs.\n")
+  print("ElementaryFluxModes.jl reports $(length(julia)) EFMs. ")
 end
 
 function markov_table(#
