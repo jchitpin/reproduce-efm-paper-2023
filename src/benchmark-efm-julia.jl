@@ -58,16 +58,16 @@ E11 = CSV.read("../data/stoich-20-80-efm-matrix.csv", Tables.matrix, header=fals
 # May need to adjust benchmarking time limits for your CPU hardware
 BenchmarkTools.DEFAULT_PARAMETERS.samples = 100 # 100 samples
 BenchmarkTools.DEFAULT_PARAMETERS.seconds = 5
-B1 = @benchmark steady_state_efm_distribution(S01, v01)
-B2 = @benchmark steady_state_efm_distribution(S02, v02)
-B3 = @benchmark steady_state_efm_distribution(S03, v03)
+B1 = @benchmark steady_state_efm_distribution(S01, v01) # 1.66 MiB
+B2 = @benchmark steady_state_efm_distribution(S02, v02) # 845 KiB
+B3 = @benchmark steady_state_efm_distribution(S03, v03) # 10.28 MiB
 BenchmarkTools.DEFAULT_PARAMETERS.seconds = 10
-B4 = @benchmark steady_state_efm_distribution(S04, v04)
-B5 = @benchmark steady_state_efm_distribution(S05, v05)
+B4 = @benchmark steady_state_efm_distribution(S04, v04) # 135.18 MiB
+B5 = @benchmark steady_state_efm_distribution(S05, v05) # 37.79 MiB
 BenchmarkTools.DEFAULT_PARAMETERS.seconds = 300 # benchmark stops if time limit exceeded
-B6 = @benchmark steady_state_efm_distribution(S06, v06)
-BenchmarkTools.DEFAULT_PARAMETERS.seconds = 600 # benchmark stops if time limit exceeded
-B7 = @benchmark steady_state_efm_distribution(S07, v07) # 34 GiB memory required
+B6 = @benchmark steady_state_efm_distribution(S06, v06) # 2.01 GiB
+#BenchmarkTools.DEFAULT_PARAMETERS.seconds = 600 # benchmark stops if time limit exceeded
+#B7 = @benchmark steady_state_efm_distribution(S07, v07) # infeasible (34 GiB memory required)
 #B8 = @benchmark steady_state_efm_distribution(S08, v08) # infeasible
 #B9 = @benchmark steady_state_efm_distribution(S09, v09) # infeasible
 #B10 = @benchmark steady_state_efm_distribution(S10, v10) # infeasible
@@ -81,7 +81,7 @@ R03 = steady_state_efm_distribution(S03, v03)
 R04 = steady_state_efm_distribution(S04, v04)
 R05 = steady_state_efm_distribution(S05, v05)
 R06 = steady_state_efm_distribution(S06, v06)
-R07 = steady_state_efm_distribution(S07, v07) # 34 GiB memory required
+#R07 = steady_state_efm_distribution(S07, v07) # infeasible (34 GiB memory required)
 #R08 = steady_state_efm_distribution(S08, v08) # infeasible
 #R09 = steady_state_efm_distribution(S09, v09) # infeasible
 #R10 = steady_state_efm_distribution(S10, v10) # infeasible
@@ -94,7 +94,7 @@ idx_intersect_03 = compare_efms(E03, R03.e, S03); # 182 EFMs
 idx_intersect_04 = compare_efms(E04, R04.e, S04); # 438 EFMs
 idx_intersect_05 = compare_efms(E05, R05.e, S05); # 289 EFMs
 idx_intersect_06 = compare_efms(E06, R06.e, S06); # 2478 EFMs
-idx_intersect_07 = compare_efms(E07, R07.e, S07); # 6860 EFMs
+#idx_intersect_07 = compare_efms(E07, R07.e, S07); # 6860 EFMs
 #idx_intersect_08 = compare_efms(E08, R08.e, S08); # 28695 EFMs
 #idx_intersect_09 = compare_efms(E09, R09.e, S09); # 34883 EFMs
 #idx_intersect_10 = compare_efms(E10, R10.e, S10); # 87207 EFMs
@@ -108,7 +108,7 @@ mat = CSV.read(#
   header=true
 )
 m(x) = sum(x)/length(x) * 1e-9 # mean time in seconds
-B = [B1.times, B2.times, B3.times, B4.times, B5.times, B6.times, B7.times, [0], [0], [0], [0]]
+B = [B1.times, B2.times, B3.times, B4.times, B5.times, B6.times, [0], [0], [0], [0], [0]]
 EFM = [#
   length(R01.e),
   length(R02.e),
@@ -116,20 +116,16 @@ EFM = [#
   length(R04.e),
   length(R05.e),
   length(R06.e),
-  length(R07.e),
-   28695, # hardcoded
-   34883, # hardcoded
-   87207, # hardcoded
-   108868 # hardcoded
+  6860,  # hardcoded
+  28695, # hardcoded
+  34883, # hardcoded
+  87207, # hardcoded
+  108868 # hardcoded
 ]
 res1 = hcat(EFM, mat[:,2])
 res2 = hcat(EFM, m.(B))
 
-# Simple linear regression of time on number of EFMs
-linreg(x, y) = hcat(fill!(similar(x), 1), x) \ y
-linreg(res1[:,1], res1[:,2]) # slope and intercept of FluxModeCalculator
-linreg(res2[:,1], res2[:,2]) # slope and intercept of MarkovWeightedEFMs.jl
-
+# Note: Simple linear regression of time on number of EFMs done in PGFPlots
 CSV.write(#
   "../data/scatterplot-benchmark-fluxmodecalculator.csv",
   Tables.table(res1),
