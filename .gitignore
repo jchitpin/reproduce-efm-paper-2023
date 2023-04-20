@@ -1,0 +1,6 @@
+src/supplementary-04.sh
+src/benchmark-efm-julia.jl
+src/benchmark_efm_matlab.m
+figures/supplementary-04
+data/scatterplot-benchmark-markovweightedefms.jl.csv
+data/scatterplot-benchmark-fluxmodecalculator.csv

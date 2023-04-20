@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.16)  2 FEB 2023 17:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2023.2.27)  11 APR 2023 13:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -445,13 +445,13 @@ LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <8> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 103.
 ) (./input-example-2-network.tex
 
-./input-example-2-network.tex:82: Package pgfkeys Error: I do not know the key '/tikz/width', to which you passed '0.1cm', and I am going to ignore it. Perhaps you misspelled it.
+./input-example-2-network.tex:65: Package pgfkeys Error: I do not know the key '/tikz/width', to which you passed '0.1cm', and I am going to ignore it. Perhaps you misspelled it.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.82 ...width=0.1cm,fill=white,above=0.60cm of A1]
+l.65 ...width=0.1cm,fill=white,above=0.60cm of A1]
                                                    (Z) {};
 (That was another \errmessage.)
 
@@ -462,15 +462,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./figure-01.aux) ) 
 Here is how much of TeX's memory you used:
- 18213 strings out of 478238
- 409683 string characters out of 5850455
- 833764 words of memory out of 5000000
- 36113 multiletter control sequences out of 15000+600000
+ 18175 strings out of 478238
+ 408887 string characters out of 5850456
+ 813725 words of memory out of 5000000
+ 36075 multiletter control sequences out of 15000+600000
  472338 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,13n,117p,407b,1146s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,13n,117p,407b,1143s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on figure-01.pdf (1 page, 40322 bytes).
+Output written on figure-01.pdf (1 page, 38397 bytes).
 PDF statistics:
  26 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream

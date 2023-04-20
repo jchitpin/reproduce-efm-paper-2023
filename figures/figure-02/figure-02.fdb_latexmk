@@ -1,9 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1675288205 "figure-02.tex" "figure-02.pdf" "figure-02" 1675288205
+["pdflatex"] 1681235317 "figure-02.tex" "figure-02.pdf" "figure-02" 1681235318
   "/dev/null" 0 -1 0 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1650183167 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1650183167 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmss8.tfm" 1650183167 1296 d77f431d10d47c8ea2cc18cf45346274 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1650183167 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1650183167 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1650183167 24420 52dbb8e8aa0069a1b987309557f8d303 ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1650183167 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -135,12 +136,12 @@
   "/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1650183167 56029 3f7889dab51d620aa43177c391b7b190 ""
   "/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1650183167 4902 efb3d66683a2da2a232f71e3a571a899 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1650183167 39911 2da6c67557ec033436fe5418a70a8a61 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1668617297 4315474 8545937f5bb73233dbb5f6e5d8ab5917 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1668617283 2927661 c7db59075a266311dd33dc3efabaea90 ""
-  "figure-02.aux" 1675288205 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1677523367 4315474 8545937f5bb73233dbb5f6e5d8ab5917 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1677523362 2927663 5e4351c61544d53b8194015298c45691 ""
+  "figure-02.aux" 1681235317 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "figure-02.tex" 1675288029 1793 aa9809ce0af66b2c6392803c54f0bf7a ""
-  "input-example-1-cyclehistory.tex" 1675288178 4422 39a6eb31ef187bb4e5c0422113e31bca ""
-  "input-example-2-cyclehistory.tex" 1675288204 3848 3011a68ed2b5ed4e5b383254773ff0ba ""
+  "input-example-1-cyclehistory.tex" 1681234765 5634 449761323f62692d39701a73a223fcf0 ""
+  "input-example-2-cyclehistory.tex" 1681235316 3848 398181bd95bd33385995077a63351702 ""
   (generated)
   "figure-02.aux"
   "figure-02.log"

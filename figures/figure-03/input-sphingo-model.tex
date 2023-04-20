@@ -1,173 +1,173 @@
 \begin{tikzpicture}[%
   %>=latex,
-  ctlinedd/.style={%
+  ctlinedd/.style={% cartoon line (dotted)
     dotted,
     line width=0.75pt
   },
-  cartoon/.style={%
+  cartoon/.style={% cartoon arrow (solid)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     line width=0.75pt
   },
-  ctline/.style={%
+  ctline/.style={% cartoon line (solid)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     line width=0.75pt
   },
-  ctlined/.style={%
+  ctlined/.style={% cartoon line (dashed)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     dashed,
     line width=0.75pt
   },
-  cartoonMA/.style={%
+  cartoonMA/.style={% cartoon arrow (solid; mass action reactions)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mPurple,
     line width=0.75pt
   },
-  ctlineMA/.style={%
+  ctlineMA/.style={% cartoon line (solid; mass action reactions)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mPurple,
     line width=0.75pt
   },
-  ctlinedMA/.style={%
+  ctlinedMA/.style={% cartoon line (dashed; mass action reactions)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mPurple,
     dashed,
     line width=0.75pt
   },
-  cartoonOM/.style={%
+  cartoonOM/.style={% cartoon arrow (solid; outer membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mGreen,
     line width=0.75pt
   },
-  ctlineOM/.style={%
+  ctlineOM/.style={% cartoon line (outer membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mGreen,
     line width=0.75pt
   },
-  ctlinedOM/.style={%
+  ctlinedOM/.style={% cartoon line (dashed; outer membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mGreen,
     dashed,
     line width=0.75pt
   },
-  cartoonIM/.style={%
+  cartoonIM/.style={% cartoon arrow (solid; inner membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mOlive,
     line width=0.75pt
   },
-  ctlineIM/.style={%
+  ctlineIM/.style={% cartoon line (solid; inner membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mOlive,
     line width=0.75pt
   },
-  ctlinedIM/.style={%
+  ctlinedIM/.style={% cartoon line (dashed; inner membrane compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mOlive,
     dashed,
     line width=0.75pt
   },
-  cartoonNu/.style={%
+  cartoonNu/.style={% cartoon arrow (solid; nucleus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mWine,
     line width=0.75pt
   },
-  ctlineNu/.style={%
+  ctlineNu/.style={% cartoon line (solid; nucleus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mWine,
     line width=0.75pt
   },
-  ctlinedNu/.style={%
+  ctlinedNu/.style={% cartoon line (dashed; nucleus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mWine,
     dashed,
     line width=0.75pt
   },
-  cartoonER/.style={%
+  cartoonER/.style={% cartoon arrow (solid; endoplasmic reticulum compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mRose,
     line width=0.75pt
   },
-  ctlineER/.style={%
+  ctlineER/.style={% cartoon line (solid; endoplasmic reticulum compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mRose,
     line width=0.75pt
   },
-  ctlinedER/.style={%
+  ctlinedER/.style={% cartoon line (dashed; endoplasmic reticulum compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mRose,
     dashed,
     line width=0.75pt
   },
-  cartoonMi/.style={%
+  cartoonMi/.style={% cartoon arrow (solid; mitochondria compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mIndigo,
     line width=0.75pt
   },
-  ctlineMi/.style={%
+  ctlineMi/.style={% cartoon line (solid; mitochondria compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mIndigo,
     line width=0.75pt
   },
-  ctlinedMi/.style={%
+  ctlinedMi/.style={% cartoon line (dashed; mitochondria compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mIndigo,
     dashed,
     line width=0.75pt
   },
-  cartoonLy/.style={%
+  cartoonLy/.style={% cartoon arrow (solid; lysosome compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mCyan,
     line width=0.75pt
   },
-  ctlineLy/.style={%
+  ctlineLy/.style={% cartoon line (solid; lysosome compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mCyan,
     line width=0.75pt
   },
-  ctlinedLy/.style={%
+  ctlinedLy/.style={% cartoon line (dashed; lysosome compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mCyan,
     dashed,
     line width=0.75pt
   },
-  cartoonGA/.style={%
+  cartoonGA/.style={% cartoon arrow (solid; golgi apparatus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mTeal,
     line width=0.75pt
   },
-  ctlineGA/.style={%
+  ctlineGA/.style={% cartoon line (solid; golgi apparatus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mTeal,
     line width=0.75pt
   },
-  ctlinedGA/.style={%
+  ctlinedGA/.style={% cartoon line (dashed; golgi apparatus compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mTeal,
     dashed,
     line width=0.75pt
   },
-  cartoonCF/.style={%
+  cartoonCF/.style={% cartoon arrow (solid; golgi apparatus cytoplasmic face compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Stealth},
     %draw=mSand,
     line width=0.75pt
   },
-  ctlineCF/.style={%
+  ctlineCF/.style={% cartoon line (solid; golgi apparatus cytoplasmic face compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mSand,
     line width=0.75pt
   },
-  ctlinedCF/.style={%
+  ctlinedCF/.style={% cartoon line (dashed; golgi apparatus cytoplasmic face compartment)
     {Square[slant=-0.5,length=\the\pgflinewidth]}-{Square[slant=-0.5,length=\the\pgflinewidth]},
     %draw=mSand,
     dashed,
     line width=0.75pt
   },
-  every node/.style={%
+  every node/.style={% default/backup properties of all nodes
     font=\sffamily\footnotesize\itshape,
     text=black,
     text centered,
     align=center
   },
-  frame/.style={%
+  frame/.style={% default/backup bounding box frame properties for compartments
     draw,
     draw=black,
     thick,
@@ -176,7 +176,7 @@
     rounded corners=3pt,
     inner sep=2pt
   },
-  every label/.style={%
+  every label/.style={% default/backup label properties
     text=black,
     font=\scriptsize\sffamily
   },

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.16)  1 FEB 2023 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2023.2.27)  11 APR 2023 13:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -420,6 +420,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (./input-example-1-cyclehistory.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 41.
+
 Missing character: There is no S in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -535,24 +538,22 @@ Package varwidth Warning: Failed to reprocess entire contents on input line 74.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 74.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 74.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./figure-02.aux) ) 
 Here is how much of TeX's memory you used:
- 18031 strings out of 478238
- 408244 string characters out of 5850455
- 762048 words of memory out of 5000000
- 35944 multiletter control sequences out of 15000+600000
+ 18054 strings out of 478238
+ 408575 string characters out of 5850456
+ 782566 words of memory out of 5000000
+ 35967 multiletter control sequences out of 15000+600000
  470164 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,13n,117p,407b,1276s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb>
-Output written on figure-02.pdf (1 page, 26021 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+Output written on figure-02.pdf (1 page, 35621 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 26 PDF objects out of 1000 (max. 8388607)
+ 16 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
