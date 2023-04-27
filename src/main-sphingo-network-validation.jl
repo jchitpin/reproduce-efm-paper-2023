@@ -92,11 +92,34 @@ stoich_ad = copy(stoich_clean)
 
 # Wildtype fluxes
 fluxes_wt = model_wt_fluxes(sol_wt[end])
+fluxes_wt_heatmap = deepcopy(abs.(fluxes_wt))
 fluxes_wt = fluxes_wt[setdiff(1:length(fluxes_wt), idx_remove)]
 
 # Disease fluxes
 fluxes_ad = model_ad_fluxes(sol_ad[end])
+fluxes_ad_heatmap = deepcopy(abs.(fluxes_ad))
 fluxes_ad = fluxes_ad[setdiff(1:length(fluxes_ad), idx_remove)]
+
+# (1) Export fluxes for heatmap
+x = repeat(1:length(fluxes_wt_heatmap), 2)
+y1 = repeat([1], length(fluxes_wt_heatmap))
+y2 = repeat([2], length(fluxes_wt_heatmap))
+y = [y1; y2]
+# Re-order fluxes by compartment
+c1 = sort([2, 3, 4, 5, 6]) # ER
+c2 = sort([8, 9, 10, 11, 12]) # nucleus
+c3 = sort([17, 18, 19, 20]) # mito
+c4 = sort([25, 26, 27, 28, 29, 30, 31, 32, 33, 46, 48, 62, 63, 64, 65, 66, 67, 68, 69]) # IM/OM
+c5 = sort([41, 42, 43, 44, 52, 53, 54, 55, 57, 58, 59, 60]) # GA and GACF
+c6 = sort([47, 49, 50]) # Lysosome
+c7 = sort([56, 24, 23, 37, 22, 16, 36, 34, 15, 35, 14, 7, 13, 21, 61, 1, 38, 39, 40, 45, 51]) # cell
+compart = [c1; c2; c3; c4; c5; c6; c7]
+# Construct heatmap file
+heat = hcat(x, y, [fluxes_wt_heatmap[compart]; fluxes_ad_heatmap[compart]])
+heat_log10 = deepcopy(heat)
+rm_idx = heat_log10[:, 3] .== 0
+heat_log10[.!rm_idx,3] = log10.(heat_log10[.!rm_idx,3])
+CSV.write("../data/fluxes-heatmap-log10-scale.csv", Tables.table(heat_log10), header = [:x, :y, :z])
 
 # (2) Must ensure fluxes are positive for computing transition probabilities
 # by flipping the flux signs and reaction directionalities in the stoichiometry

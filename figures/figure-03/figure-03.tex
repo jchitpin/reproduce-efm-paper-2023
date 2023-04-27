@@ -223,12 +223,31 @@
 \definecolor{mPurple}{HTML}{AA4499}
 \definecolor{mGray}{HTML}{DDDDDD}
 
+% Color map palette
+\definecolor{viridis1}{HTML}{fde725}
+\definecolor{viridis2}{HTML}{21918c}
+\definecolor{viridis3}{HTML}{440154}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{%
+  compat=1.18,
+  colormap={mycolormap}{%
+    color(-6.0) = (viridis1)
+    color(-3.0) = (viridis2)
+    color(-0.2) = (viridis3)
+    color(-0.1) = (white)
+    color(0.0)  = (white)
+  }
+}
+
 \begin{document}
   \begin{figure}
     \centering
     \sffamily
     \begin{subfigure}{1.0\textwidth}
       \scalebox{0.35}{\input{input-sphingo-model.tex}}
+      \scalebox{0.35}{\input{heatmap.tex}}
     \end{subfigure}
   \end{figure}
 \end{document}

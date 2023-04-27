@@ -1,0 +1,84 @@
+\begin{tikzpicture}
+  \begin{axis}[
+    %colorbar horizontal,
+    colormap/jet,
+    colormap name=mycolormap,
+    colorbar,
+    colorbar style={%
+      title={$\log_{10}$(Flux)},
+      title style={yshift=-0.5ex},
+      yticklabel style={font=\small},
+      yticklabel=$10^{\pgfmathprintnumber{\tick}}$,
+      yticklabels={, -6, -4, -2, NaN}, % check based on above line
+    },
+      width=33cm,
+      height=2.4cm,
+      xtick={},
+      xtick style={draw=none},
+      ytick={1, 2},
+      ytick style={draw=none},
+      yticklabels={Wildtype, Disease},
+      enlargelimits=false,
+      axis on top,
+      point meta min=-6,
+      point meta max=-0.0001,
+      mesh/cols=69,
+      mesh/rows=2,
+      %xmin=0,
+      %xmax=69,
+      xtick={%
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+        41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+        51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+        61, 62, 63, 64, 65, 66, 67, 68, 69
+      },
+      xticklabels={%
+        2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 17, 18, 19, 20, 25, 26, 27, 28, 29, 30,
+        31, 32, 33, 46, 48, 62, 63, 64, 65, 66, 67, 68, 69, 41, 42, 43, 44, 52,
+        53, 54,
+        55, 57, 58, 59, 60, 47, 49, 50, 1, 7, 13, 14, 15, 16, 21, 22, 23, 24,
+        34, 35,
+        36, 37, 38, 39, 40, 45, 51, 56, 61
+      },
+      x tick label style={rotate=0, font=\tiny},
+      xlabel={Reaction \#},
+      xlabel style={yshift=-2.0ex},
+  ]
+  \addplot[matrix plot*,point meta=explicit]
+      table [x=x,y=y,meta=z, col sep=comma] {../../data/fluxes-heatmap-log10-scale.csv};
+  \end{axis}
+  % X-axis sub labels
+  \node[] (ER1) at (rel axis cs: 0.0,-0.4) {};
+  \node[] (ER2) at (rel axis cs: 4.4,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (ER3) at ($(ER1)!0.5!(ER2)$) {Endoplasmic reticulum};
+  \draw[-] (ER1.center) -- (ER2.center);
+  \node[] (N1) at (rel axis cs: 4.6,-0.4) {};
+  \node[] (N2) at (rel axis cs: 9.0,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (N3) at ($(N1)!0.5!(N2)$) {Nucleus};
+  \draw[-] (N1.center) -- (N2.center);
+  \node[] (M1) at (rel axis cs: 9.2,-0.4) {};
+  \node[] (M2) at (rel axis cs: 12.7,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (M3) at ($(M1)!0.5!(M2)$) {Mitochondria};
+  \draw[-] (M1.center) -- (M2.center);
+  \node[] (OIM1) at (rel axis cs: 12.9,-0.4) {};
+  \node[] (OIM2) at (rel axis cs: 29.1,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (OIM3) at ($(OIM1)!0.5!(OIM2)$) {Outer \& inner membrane};
+  \draw[-] (OIM1.center) -- (OIM2.center);
+  \node[] (GA1) at (rel axis cs: 29.3,-0.4) {};
+  \node[] (GA2) at (rel axis cs: 40.0,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (GA3) at ($(GA1)!0.5!(GA2)$) {Golgi apparatus \& cytoplasmic face};
+  \draw[-] (GA1.center) -- (GA2.center);
+  \node[] (L1) at (rel axis cs: 40.2,-0.4) {};
+  \node[] (L2) at (rel axis cs: 42.7,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (L3) at ($(L1)!0.5!(L2)$) {Lysosome};
+  \draw[-] (L1.center) -- (L2.center);
+  \node[] (C1) at (rel axis cs: 42.9,-0.4) {};
+  \node[] (C2) at (rel axis cs: 62.8,-0.4) {};
+  \node[font=\tiny,yshift=-0.2cm] (C3) at ($(C1)!0.5!(C2)$) {Cell};
+  \draw[-] (C1.center) -- (C2.center);
+
+\end{tikzpicture}
+
