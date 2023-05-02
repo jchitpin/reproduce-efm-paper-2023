@@ -279,6 +279,16 @@ res = [#
   g(no_wt.efms_raw[1], vec(sum(A, dims=1))) f(no_ad.efms_raw[1], no_wt.efms_raw[1], sortperm(no_wt.efms_raw[1])) repeat(["milp_Gurobi"], length(w_raw_wt));
 ]
 
+
+## Number of zero folds because one or both EFM weights were undefined:
+## (Manually identified from ..data/scatterplot-fc-flux-contribution.csv
+# Markov           |  0
+# L2_norm_COSMO:   | 25
+# qp_max_spa_COSMO | 27
+# lp_max_spa_SCIP  | 32
+# lp_min_spa_SCIP  | 34
+# milp_Gurobi      | 34
+
 CSV.write(#
   "../data/scatterplot-fc-flux-contribution.csv",
   Tables.table(res),

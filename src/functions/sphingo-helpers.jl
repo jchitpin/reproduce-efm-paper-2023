@@ -128,7 +128,7 @@ function efm_flux_percentage(#
   @assert(cutoff >= 0.0 && cutoff <= 1.0, "cutoff must be a percentage.")
 
   # EFM flux percentages (ordered)
-  t(x) = x .* vec(sum(efms, dims=1))
+  t(x) = x .* vec(sum(efm, dims=1))
   u(x) = x / sum(x)
   v(x) = sort(x, rev=true)
   combined_vals = [#
@@ -161,7 +161,7 @@ function efm_flux_percentage_top(#
 )
   @assert(cutoff >= 0.0 && cutoff <= 1.0, "cutoff must be a percentage.")
 
-  t(x) = x .* vec(sum(efms, dims=1))
+  t(x) = x .* vec(sum(efm, dims=1))
   u(x) = x / sum(x)
   v(x) = sort(x, rev=true)
   w(x) = sortperm(x, rev=true)
