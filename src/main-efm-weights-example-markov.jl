@@ -19,7 +19,20 @@ using GLMakie
 
 ## EXAMPLE 01 ------------------------------------------------------------------
 # Stoichiometry matrix (rows are metabolites; cols are reactions)
-S1 = [#
+# Open network version
+S1o = [#
+      1 -1 -1  0  0  0  0  0  0
+      0  1  0 -1  0  0  0  0  0
+      0  0  1  1 -1 -1  0  0  0
+      0  0  0  0  1  0 -1  0  0
+      0  0  0  0  0  1  0 -1  0
+      0  0  0  0  0  0  1  1 -1
+]
+v1o = [4, 2, 2, 2, 2, 2, 2, 2, 4]
+all(S1o * v1o .== 0) # steady state requirement met
+
+# Closed network version
+S1c = [#
      -1 -1  0  0  0  0  0  1
       1  0 -1  0  0  0  0  0
       0  1  1 -1 -1  0  0  0
@@ -27,16 +40,24 @@ S1 = [#
       0  0  0  0  1  0 -1  0
       0  0  0  0  0  1  1 -1
 ]
-v1 = [2, 2, 2, 2, 2, 2, 2, 4]
+v1c = [2, 2, 2, 2, 2, 2, 2, 4]
 
-all(S1 * v1 .== 0) # steady state requirement met
+all(S1c * v1c .== 0) # steady state requirement met
 
 
-# Enumerate EFMs, compute their probabilities and weights
-res1 = steady_state_efm_distribution(S1, v1)
+# Enumerate EFMs, compute their probabilities and weights (open)
+res1o = steady_state_efm_distribution(S1o, v1o)
+res1o.e # EFM state sequences
+res1o.p # EFM probabilities (in same order as EFMs)
+res1o.w # EFM weights (in same order as EFMs)
+
+# Enumerate EFMs, compute their probabilities and weights (closed)
+res1 = steady_state_efm_distribution(S1c, v1c)
 res1.e # EFM state sequences
 res1.p # EFM probabilities (in same order as EFMs)
 res1.w # EFM weights (in same order as EFMs)
+
+res1o.w .- res1.w # approximately zero if not for numerical estimation of stationary distribution
 
 # Plot cycle-history Markov chain
 T1 = stoich_to_transition(S1, v1)
