@@ -23,6 +23,8 @@ The following is required:
   (by roughly 10^-16). Thus, the EFM weights may vary slightly from
   MarkovWeightedEFMs.jl and the other optimization-based approaches. This code
   was last run with `DifferentialEquations v7.4.0`.
+* All experiments conducted on a Ryzen 5950X with 16 cores allocated to Julia
+  and MATLAB with 32 GB of memory (16 GB recommended to run all scripts).
 
 ## Installation
 
