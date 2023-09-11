@@ -87,7 +87,7 @@ Figures are generated via:
 
 1. `sh supplementary-02.sh`
 
-### Supplementary Table 1
+### Supplementary Figure 3/Table 1
 
 1. `$ julia main-sphingo-network-validation.jl`
 2. `$ julia main-efm-weights-sphingo-markov.jl`
