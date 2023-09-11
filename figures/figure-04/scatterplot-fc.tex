@@ -32,9 +32,9 @@
     legend cell align={left}
   ]
 
-    \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0] {../../data/scatterplot-fc-flux-contribution.csv};
+    \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0] {/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/scatterplot-fc-flux-contribution.csv};
     \legend{Markov, Min L2 (COSMO), Max qSPA (COSMO), Max lSPA (SCIP), Min lSPA (SCIP), Min milAP (Gurobi)};
-    \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0, discard if not={method}{Markov}] {../../data/scatterplot-fc-flux-contribution.csv};
+    \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0, discard if not={method}{Markov}] {/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/scatterplot-fc-flux-contribution.csv};
     \draw[dashed,thin] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},-2) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},-2);
     \draw[dashed,thin] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},+2) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},+2);
 

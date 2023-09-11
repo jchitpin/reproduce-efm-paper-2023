@@ -1,7 +1,0 @@
-PWD /home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/figures/figure-01
-INPUT /usr/share/texmf-dist/web2c/texmf.cnf
-INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT input-example-2-network.tex
-OUTPUT input-example-2-network.log
-INPUT /usr/share/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmss10.tfm

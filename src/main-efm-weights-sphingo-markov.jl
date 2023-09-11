@@ -14,6 +14,7 @@ cd("/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/src/")
 
 ## JULIA PACKAGES AND FUNCTIONS ------------------------------------------------
 using MarkovWeightedEFMs
+using BenchmarkTools
 using Tables, CSV, NumericIO, JuMP, DelimitedFiles
 include.(filter(contains(r".jl$"), readdir("functions"; join=true)))
 # ------------------------------------------------------------------------------
@@ -29,6 +30,10 @@ mets = vec(CSV.read("../data/metabolites.csv", Tables.matrix, header=false))
 ## COMPUTING EFM PROBABILITIES BY MARKOV CHAIN ---------------------------------
 res_wt = steady_state_efm_distribution(stoich_wt, fluxes_wt)
 res_ad = steady_state_efm_distribution(stoich_ad, fluxes_ad)
+
+# Benchmarking
+b_wt = @benchmark steady_state_efm_distribution(stoich_wt, fluxes_wt)
+mean(b_wt.times) * 1e-6 # 11.154 ms mean time to enumerate EFMS+compute weights
 # ------------------------------------------------------------------------------
 
 ## EXPORTING EFM PROPORTIONS ---------------------------------------------------

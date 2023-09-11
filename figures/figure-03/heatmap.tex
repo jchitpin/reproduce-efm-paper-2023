@@ -13,6 +13,7 @@
     },
       width=33cm,
       height=2.4cm,
+      xlabel style={font=\Large},
       xtick={},
       xtick style={draw=none},
       ytick={1, 2},
@@ -43,41 +44,41 @@
         34, 35,
         36, 37, 38, 39, 40, 45, 51, 56, 61
       },
-      x tick label style={rotate=0, font=\tiny},
+      x tick label style={rotate=0, font=\footnotesize},
       xlabel={Reaction \#},
       xlabel style={yshift=-2.0ex},
   ]
   \addplot[matrix plot*,point meta=explicit]
-      table [x=x,y=y,meta=z, col sep=comma] {../../data/fluxes-heatmap-log10-scale.csv};
+      table [x=x,y=y,meta=z, col sep=comma] {/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/fluxes-heatmap-log10-scale.csv};
   \end{axis}
   % X-axis sub labels
   \node[] (ER1) at (rel axis cs: 0.0,-0.4) {};
   \node[] (ER2) at (rel axis cs: 4.4,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (ER3) at ($(ER1)!0.5!(ER2)$) {Endoplasmic reticulum};
+  \node[font=\small,yshift=-0.0cm,align=center,anchor=north] (ER3) at ($(ER1)!0.5!(ER2)$) {Endoplasmic\\reticulum};
   \draw[-] (ER1.center) -- (ER2.center);
   \node[] (N1) at (rel axis cs: 4.6,-0.4) {};
   \node[] (N2) at (rel axis cs: 9.0,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (N3) at ($(N1)!0.5!(N2)$) {Nucleus};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (N3) at ($(N1)!0.5!(N2)$) {Nucleus};
   \draw[-] (N1.center) -- (N2.center);
   \node[] (M1) at (rel axis cs: 9.2,-0.4) {};
   \node[] (M2) at (rel axis cs: 12.7,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (M3) at ($(M1)!0.5!(M2)$) {Mitochondria};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (M3) at ($(M1)!0.5!(M2)$) {Mitochondria};
   \draw[-] (M1.center) -- (M2.center);
   \node[] (OIM1) at (rel axis cs: 12.9,-0.4) {};
   \node[] (OIM2) at (rel axis cs: 29.1,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (OIM3) at ($(OIM1)!0.5!(OIM2)$) {Outer \& inner membrane};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (OIM3) at ($(OIM1)!0.5!(OIM2)$) {Outer \& inner membrane};
   \draw[-] (OIM1.center) -- (OIM2.center);
   \node[] (GA1) at (rel axis cs: 29.3,-0.4) {};
   \node[] (GA2) at (rel axis cs: 40.0,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (GA3) at ($(GA1)!0.5!(GA2)$) {Golgi apparatus \& cytoplasmic face};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (GA3) at ($(GA1)!0.5!(GA2)$) {Golgi apparatus \& cytoplasmic face};
   \draw[-] (GA1.center) -- (GA2.center);
   \node[] (L1) at (rel axis cs: 40.2,-0.4) {};
   \node[] (L2) at (rel axis cs: 42.7,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (L3) at ($(L1)!0.5!(L2)$) {Lysosome};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (L3) at ($(L1)!0.5!(L2)$) {Lysosome};
   \draw[-] (L1.center) -- (L2.center);
   \node[] (C1) at (rel axis cs: 42.9,-0.4) {};
   \node[] (C2) at (rel axis cs: 62.8,-0.4) {};
-  \node[font=\tiny,yshift=-0.2cm] (C3) at ($(C1)!0.5!(C2)$) {Cell};
+  \node[font=\small,yshift=-0.0cm,anchor=north] (C3) at ($(C1)!0.5!(C2)$) {Cell};
   \draw[-] (C1.center) -- (C2.center);
 
 \end{tikzpicture}

@@ -15,12 +15,12 @@
     }
   }
 }
-\pgfplotstableread[col sep=tab]{../../data/barplot-zero-weight-freq-wt.csv}\mydata
+\pgfplotstableread[col sep=tab]{/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/barplot-zero-weight-freq-wt.csv}\mydata
 
 \begin{tikzpicture}
   \begin{groupplot}[
     group style={%
-      group name=wildtype,
+      group name=healthy,
       group size=1 by 2,
       xticklabels at=edge bottom,
       vertical sep=0pt
@@ -41,14 +41,14 @@
       ylabel = {EFM weight ($\log_{10}$)},
       title style={yshift=-5.5ex},
       ylabel shift={-6 pt},
-      title={\textbf{Wildtype}},
+      title={\textbf{Healthy}},
       legend style={at={(1.001,0.2345)},anchor=east, font=\small},
       legend cell align={left}
       %height=4.5cm
     ]
-      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0] {../../data/scatterplot-total-efm-weights-wt-log.csv};
+      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0] {/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/scatterplot-total-efm-weights-wt-log.csv};
       \legend{Markov, Min L2 (2), Max qSPA (2), Max lSPA (8), Min lSPA (8), Min milAP (1)};
-      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0,discard if not={class}{Markov}] {../../data/scatterplot-total-efm-weights-wt-log.csv};
+      \addplot[mystyle] table [x index=0, y index=1, meta index=2, col sep=tab, skip first n=0,discard if not={class}{Markov}] {/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/data/scatterplot-total-efm-weights-wt-log.csv};
 
     \nextgroupplot[%
       %yshift=-1cm,
@@ -62,7 +62,7 @@
       xtick={0, 10, 20, 30, 40, 50},
       ytick={0, 1.0},
       height=3.0cm,
-      xlabel={EFM indices sorted by wildtype Markov solution},
+      xlabel={EFM indices sorted by healthy Markov solution},
       xlabel style={font=\small},
       ylabel={Zero weight (\%)},
       ylabel style={text width=2.5cm, text centered},
@@ -90,6 +90,6 @@
 
   \end{groupplot}
 
-  \pgfresetboundingbox\path (wildtype c1r1.outer north east) rectangle (wildtype c1r2.outer south west); % adjust to fit
+  \pgfresetboundingbox\path (healthy c1r1.outer north east) rectangle (healthy c1r2.outer south west); % adjust to fit
 \end{tikzpicture}
 

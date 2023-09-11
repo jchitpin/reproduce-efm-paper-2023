@@ -15,7 +15,7 @@ cd("/home/jchitpin/Documents/PhD/Projects/reproduce-efm-paper-2023/src/")
 
 ## JULIA PACKAGES AND FUNCTIONS ------------------------------------------------
 using Tables, CSV, Plots
-using JuMP
+using JuMP, BenchmarkTools
 using GLPK, Gurobi, SCIP, COSMO, OSQP, CDDLib, ECOS, ProxSDP, Tulip
 include.(filter(contains(r".jl$"), readdir("functions"; join=true)))
 # ------------------------------------------------------------------------------
@@ -49,30 +49,41 @@ milp_solvers, qp_solvers, lp_solvers = load_solvers()
 sk_wt = optimization_sk(A, v1, qp_solvers)
 sk_ad = optimization_sk(A, v2, qp_solvers)
 
+b_sk_wt = @benchmark jump_qp_l2norm(A, v1, qp_solvers[1]) # 1.823 ms median. 1.41 MiB memory
+b_sk_ad = @benchmark jump_qp_l2norm(A, v2, qp_solvers[1]) # 2.086 ms median. 1.58 MiB
 # ------------------------------------------------------------------------------
 
 # QUADRATIC PROGRAMMING MAXIMIZING ACTIVITY OF SHORTEST PATHWAYS ---------------
 # Reference: Orman et al. (2011) DOI:10.1016/j.jtbi.2010.11.042
 or_wt = optimization_or(A, v1, qp_solvers)
 or_ad = optimization_or(A, v2, qp_solvers)
+b_or_wt = @benchmark jump_qp_max_shortest_paths(A, v1, qp_solvers[1]) # 1.948 ms median. 1.62 MiB memory
+b_or_ad = @benchmark jump_qp_max_shortest_paths(A, v2, qp_solvers[1]) # 1.998 ms median. 1.60 MiB memory
 # ------------------------------------------------------------------------------
 
 # LINEAR PROGRAMMING MAXIMIZING ACTIVITY OF SHORTEST PATHWAYS ------------------
 # Reference: Rugen et al. (2012) DOI:10.1016/j.ymben.2012.01.009
 ru_wt = optimization_ru(A, v1, lp_solvers)
 ru_ad = optimization_ru(A, v2, lp_solvers)
+b_ru_wt = @benchmark jump_lp_max_shortest_paths(A, v1, lp_solvers[1]) # 654.919 μs median. 639.01 KiB memory
+b_ru_ad = @benchmark jump_lp_max_shortest_paths(A, v2, lp_solvers[1]) # 652.590 μs median. 639.01 KiB memory
+
 # ------------------------------------------------------------------------------
 
 # LINEAR PROGRAMMING MAXIMIZING LONGEST PATHWAYS -------------------------------
 # Reference: Ren et al. (2020) DOI:10.1016/j.algal.2019.101767
 re_wt = optimization_re(A, v1, lp_solvers)
 re_ad = optimization_re(A, v2, lp_solvers)
+b_re_wt = @benchmark jump_lp_max_longest_paths(A, v1, lp_solvers[1]) # 646.388 μs median. 639.01 KiB memory
+b_re_ad = @benchmark jump_lp_max_longest_paths(A, v2, lp_solvers[1]) # 644.420 μs median. 639.01 KiB memory
 # ------------------------------------------------------------------------------
 
 # MIXED INTEGER PROGRAMMING MAXIMIZING SHORTEST ACTIVE PATH---------------------
 # Reference: Nookaew et al. (2007) DOI:10.1002/bit.21339
 no_wt = optimization_no(A, v1, milp_solvers)
 no_ad = optimization_no(A, v2, milp_solvers)
+b_no_wt = @benchmark optimization_no(A, v1, milp_solvers) # did not run because license expired.
+b_no_ad = @benchmark optimization_no(A, v2, milp_solvers) # did not run because license expired.
 # ------------------------------------------------------------------------------
 
 # EXPORT LOG10 RECONSTRUCTION ERRORS -------------------------------------------

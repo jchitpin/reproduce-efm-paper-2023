@@ -28,6 +28,7 @@ Pkg.add(#
      "BenchmarkTools", # benchmarking
      "GLMakie", # plotting backend for MarkovWeightedEFMs
      "NumericIO" # formatting numbers for printing tables
+     "BenchmarkTools" # benchmarking
   ]
 )
 # ------------------------------------------------------------------------------

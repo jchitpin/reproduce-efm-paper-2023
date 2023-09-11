@@ -178,7 +178,8 @@
   },
   every label/.style={% default/backup label properties
     text=black,
-    font=\scriptsize\sffamily
+    %font=\scriptsize\sffamily
+    font=\small\sffamily
   },
 ]
 
@@ -600,41 +601,41 @@
   %% (3) FINAL TOP LAYER OF NODES AND EDGES
   % OM nodes (metabolites and some rxn nodes)
   \node[met] (OM_S1P) {S1P};
-  \node[rx2,left=1.5cm of OM_S1P, label=below:rxn\_68] (rxn_68) {};
+  \node[rx2,left=1.5cm of OM_S1P, label=below:R68] (rxn_68) {};
   \node[met,below=1.0cm of OM_S1P] (OM_SPH) {SPH};
-  \node[rx1,label=below:rxn\_27] at ($(OM_S1P)!0.5!(OM_SPH)$) (rxn_27) {};
-  \node[rx2,left=1.5cm of OM_SPH, label=below:rxn\_67] (rxn_67) {};
+  \node[rx1,label=below left:R27] at ($(OM_S1P)!0.5!(OM_SPH)$) (rxn_27) {};
+  \node[rx2,left=1.5cm of OM_SPH, label=below:R67] (rxn_67) {};
   \node[enz,anchor=west] at ($(rxn_67)!0.5!(rxn_68)$) (OM_SK12) {SK 1-2};
   \node[met,below=1.0cm of OM_SPH] (OM_CER) {CER};
-  \node[rx2,left=1.5cm of OM_CER, label=below:rxn\_66] (rxn_66) {};
+  \node[rx2,left=1.5cm of OM_CER, label=below:R66] (rxn_66) {};
   \node[met,below=2.5cm of OM_CER] (OM_SM) {SM};
-  \node[rx2,left=1.5cm of OM_SM, label=below:rxn\_64] (rxn_64) {};
+  \node[rx2,left=1.5cm of OM_SM, label=below:R64] (rxn_64) {};
   \node[enz,anchor=west] at ($(rxn_67)!0.5!(rxn_66)$) (OM_NCDASE) {NCDase};
-  \node[rx1,xshift=0.75cm,label=above:rxn\_69] at ($(OM_S1P)!0.5!(OM_SPH)$) (rxn_69) {};
+  \node[rx1,xshift=0.75cm,label=above right:R69] at ($(OM_S1P)!0.5!(OM_SPH)$) (rxn_69) {};
   \node[enz,right=0.75cm of rxn_69] (OM_PAP) {PAP2a-b-c};
   \node[enz,anchor=west] at ($(rxn_64)!0.25!(rxn_66)$) (OM_aSMase) {aSMase};
-  \node[rx2,below=1.75cm of OM_SM, label=below:rxn\_56] (rxn_56) {};
+  \node[rx2,below=1.75cm of OM_SM, label=below:R56] (rxn_56) {};
   \node[met,above=2.5cm of OM_PAP] (OM_GSL) {OM\_GSL};
-  \node[rx2,above=0.15cm of OM_GSL, label=above:rxn\_46] (rxn_46) {};
-  \node[rx2,label=below:rxn\_65] at ($(rxn_64)!0.5!(rxn_66)$) (rxn_65) {};
+  \node[rx2,above=0.15cm of OM_GSL, label=above:R46] (rxn_46) {};
+  \node[rx2,label=below:R65] at ($(rxn_64)!0.5!(rxn_66)$) (rxn_65) {};
   \node[met] at (rxn_65 -| OM_PAP) (OM_C1P) {C1P};
   \node[enz,left=0.13cm of OM_C1P,yshift=0.275cm] (OM_PAP2) {PAP2a-b-c};
   \node[enz,above=0.60cm of OM_C1P] (OM_CERK) {CERK};
-  \node[rx1,above=0.2cm of OM_C1P,label=right:rxn\_63] (rxn_63) {};
-  \node[rx2,above=1.5cm of OM_S1P,xshift=-1.5cm,label=above:rxn\_48] (rxn_48) {};
+  \node[rx1,above=0.2cm of OM_C1P,label=right:R63] (rxn_63) {};
+  \node[rx2,above=1.5cm of OM_S1P,xshift=-1.5cm,label=above:R48] (rxn_48) {};
 
   % IM nodes (metabolites and some rxn nodes)
   \node[met,right=4.0cm of OM_S1P] (IM_S1P) {S1P};
   \node[met,below=1.0cm of IM_S1P] (IM_SPH) {SPH};
   \node[met,below=1.0cm of IM_SPH] (IM_CER) {CER};
   \node[met,below=2.5cm of IM_CER] (IM_SM) {SM};
-  \node[rx1,label=left:rxn\_30] at ($(IM_S1P)!0.5!(IM_SPH)$) (rxn_30) {};
+  \node[rx1,label=left:R30] at ($(IM_S1P)!0.5!(IM_SPH)$) (rxn_30) {};
   \node[enz,xshift=1.25cm] at ($(IM_S1P)!0.5!(IM_SPH)$) (IM_SK1) {SK1};
-  \node[rx1,label=left:rxn\_29] at ($(IM_CER)!0.5!(IM_SPH)$) (rxn_29) {};
+  \node[rx1,label=left:R29] at ($(IM_CER)!0.5!(IM_SPH)$) (rxn_29) {};
   \node[enz,xshift=1.25cm] at ($(IM_CER)!0.5!(IM_SPH)$) (IM_NCDase) {NCDase};
-  \node[rx1,above=0.396cm of IM_SM,label=left:rxn\_28] (rxn_28) {};
+  \node[rx1,above=0.396cm of IM_SM,label=left:R28] (rxn_28) {};
   \node[enz,anchor=center] at (rxn_28 -| IM_NCDase) (IM_nSMase2) {nSMase2};
-  \node[rx2,below=0.50cm of IM_SM,label=left:rxn\_23] (rxn_23) {};
+  \node[rx2,below=0.50cm of IM_SM,label=left:R23] (rxn_23) {};
 
   % ER nodes (metabolites and some rxn nodes)
   \node[met,below=2.75cm of IM_SM] (ER_SM) {SM};
@@ -645,13 +646,13 @@
   \node[met,right=1.47cm of ER_S1P] (ER_SPH) {SPH};
   \node[met,right=1.75cm of ER_SPH] (ER_CER) {CER};
   \node[right=1.75cm of ER_CER,draw=white] (ER_PH2) {};
-  \node[rx1,label=above:rxn\_06] at ($(ER_PH)!0.5!(ER_S1P)$) (rxn_06) {};
+  \node[rx1,label=above:R06] at ($(ER_PH)!0.5!(ER_S1P)$) (rxn_06) {};
   \node[enz,below=1.0cm of rxn_06] (ER_SPL1) {SPL1};
-  \node[rx1,label=above:rxn\_05,yshift=+0.5cm] at ($(ER_S1P)!0.5!(ER_SPH)$) (rxn_05) {};
-  \node[rx1,label=below:rxn\_04,yshift=-0.5cm] at ($(ER_S1P)!0.5!(ER_SPH)$) (rxn_04) {};
-  \node[rx1,label=above:rxn\_03,yshift=+0.5cm] at ($(ER_CER)!0.5!(ER_SPH)$) (rxn_03) {};
-  \node[rx1,label=below:rxn\_02,yshift=-0.5cm] at ($(ER_CER)!0.5!(ER_SPH)$) (rxn_02) {};
-  \node[rx1,label=right:rxn\_01,yshift=+0.5cm] at ($(ER_CER)!0.5!(ER_PH2)$) (rxn_01) {};
+  \node[rx1,label=below:R05,yshift=+0.5cm] at ($(ER_S1P)!0.5!(ER_SPH)$) (rxn_05) {};
+  \node[rx1,label=above:R04,yshift=-0.5cm] at ($(ER_S1P)!0.5!(ER_SPH)$) (rxn_04) {};
+  \node[rx1,label=below:R03,yshift=+0.5cm] at ($(ER_CER)!0.5!(ER_SPH)$) (rxn_03) {};
+  \node[rx1,label=above:R02,yshift=-0.5cm] at ($(ER_CER)!0.5!(ER_SPH)$) (rxn_02) {};
+  \node[rx1,label=right:R01,yshift=+0.5cm] at ($(ER_CER)!0.5!(ER_PH2)$) (rxn_01) {};
   \node[enz,anchor=center,yshift=0.1cm] at (ER_SM -| rxn_05) (ER_SPP12) {SPP1-2};
   \node[enz,anchor=center,yshift=0.1cm] at (ER_SM -| rxn_03) (ER_CerS) {CerS};
   \node[enz,anchor=center] at (ER_SPL1 -| rxn_04) (ER_SK2) {SK2};
@@ -662,49 +663,49 @@
   \node[met,right=1.0cm of N_S1P] (N_SPH) {SPH};
   \node[met] at (N_SPH -| ER_CER) (N_CER) {CER};
   \node[met,right=1.0cm of N_CER] (N_SM) {SM};
-  \node[rx1,label=above:rxn\_12,yshift=+0.5cm] at ($(N_S1P)!0.5!(N_SPH)$) (rxn_12) {};
-  \node[rx1,label=below:rxn\_11,yshift=-0.0cm] at ($(N_S1P)!0.5!(N_SPH)$) (rxn_11) {};
-  \node[rx1,label=below:rxn\_10,yshift=-0.0cm] at ($(N_SPH)!0.5!(N_CER)$) (rxn_10) {};
-  \node[rx1,label=below:rxn\_09,yshift=-0.0cm] at ($(N_CER)!0.5!(N_SM)$) (rxn_09) {};
-  \node[rx1,label=above:rxn\_08,yshift=+0.5cm] at ($(N_CER)!0.5!(N_SM)$) (rxn_08) {};
+  \node[rx1,label=above right:R12,yshift=+0.5cm] at ($(N_S1P)!0.5!(N_SPH)$) (rxn_12) {};
+  \node[rx1,label={below right,yshift=-0.1cm}:R11,yshift=-0.0cm] at ($(N_S1P)!0.5!(N_SPH)$) (rxn_11) {};
+  \node[rx1,label=above:R10,yshift=-0.0cm] at ($(N_SPH)!0.5!(N_CER)$) (rxn_10) {};
+  \node[rx1,label={below right,yshift=-0.1cm}:R09,yshift=-0.0cm] at ($(N_CER)!0.5!(N_SM)$) (rxn_09) {};
+  \node[rx1,label=above right:R08,yshift=+0.5cm] at ($(N_CER)!0.5!(N_SM)$) (rxn_08) {};
   \node[enz,below=0.5cm of rxn_11] (N_SK2) {SK2};
   \node[enz,above=0.5cm of rxn_12] (N_PAP2a) {PAP2a};
   \node[enz,below=0.5cm of rxn_10] (N_NCDase) {NCDase};
   \node[enz,below=0.5cm of rxn_09] (N_nSMase) {nSMase};
   \node[enz,above=0.5cm of rxn_08] (N_SMS) {SMS};
-  \node[rx2,below=1.2cm of N_S1P,label=right:rxn\_15] (rxn_15) {};
-  \node[rx2,label=right:rxn\_14] at (rxn_15 -| N_SPH) (rxn_14) {};
-  \node[rx2,label=right:rxn\_13] at (rxn_15 -| N_SM) (rxn_13) {};
+  \node[rx2,below=1.2cm of N_S1P,label=right:R15] (rxn_15) {};
+  \node[rx2,label=right:R14] at (rxn_15 -| N_SPH) (rxn_14) {};
+  \node[rx2,label=right:R13] at (rxn_15 -| N_SM) (rxn_13) {};
 
   % L nodes (metabolites and some rxn nodes)
   \node[met,right=18.5cm of rxn_46] (L_GSL) {GSL};
   \node[met] at (L_GSL |- rxn_48) (L_SM) {SM};
-  \node[rx1,right=0.75cm of L_SM,label=above:rxn\_49] (rxn_49) {};
+  \node[rx1,right=0.75cm of L_SM,label=above:R49] (rxn_49) {};
   \node[met,right=0.75cm of rxn_49] (L_CER) {CER};
-  \node[rx1,right=0.75cm of L_CER,label=above:rxn\_50] (rxn_50) {};
+  \node[rx1,right=0.75cm of L_CER,label=above:R50] (rxn_50) {};
   \node[met,right=0.75cm of rxn_50] (L_SPH) {SPH};
-  \node[rx1,label=above:rxn\_47] at (L_GSL -| L_CER) (rxn_47) {};
+  \node[rx1,label={above,yshift=-0.05cm}:R47] at (L_GSL -| L_CER) (rxn_47) {};
   \node[enz] at (rxn_47 -| rxn_50) (L_bGC) {$\beta$-GC};
   \node[enz,below=0.75cm of rxn_50] (L_ACDase) {ACDase};
   \node[enz,below=0.75cm of rxn_49,xshift=-0.75cm] (L_aSMase) {aSMase};
-  \node[rx2,below=1.5cm of L_SPH,label=right:rxn\_51] (rxn_51) {};
+  \node[rx2,below=1.5cm of L_SPH,label=right:R51] (rxn_51) {};
 
   % GA nodes (metabolites and some rxn nodes)
   \node[met] at (OM_C1P -| rxn_49) (GA_C1P) {C1P};
   \node[met] at (rxn_56 -| GA_C1P) (GA_CER) {CER};
   \node[met,left=1.5cm of GA_CER] (GA_SM) {SM};
-  \node[rx1,label=above:rxn\_57,yshift=+0.0cm] at ($(GA_SM)!0.5!(GA_CER)$) (rxn_57) {};
-  \node[rx1,label=below:rxn\_55,yshift=-0.5cm] at ($(GA_SM)!0.5!(GA_CER)$) (rxn_55) {};
+  \node[rx1,label=above right:R57,yshift=+0.0cm] at ($(GA_SM)!0.5!(GA_CER)$) (rxn_57) {};
+  \node[rx1,label=below right:R55,yshift=-0.5cm] at ($(GA_SM)!0.5!(GA_CER)$) (rxn_55) {};
   \node[enz,below=0.5cm of rxn_55] (GA_SMS1) {SMS1};
   \node[met,right=1.5cm of GA_CER] (GA_SPH) {SPH};
   \node[met,right=1.5cm of GA_SPH] (GA_S1P) {S1P};
-  \node[rx1,label=above:rxn\_58,yshift=+0.0cm] at ($(GA_CER)!0.535!(GA_SPH)$) (rxn_58) {};
-  \node[rx1,label=above:rxn\_53,yshift=+0.0cm] at ($(GA_S1P)!0.5!(GA_SPH)$) (rxn_53) {};
+  \node[rx1,label=below:R58,yshift=+0.0cm] at ($(GA_CER)!0.535!(GA_SPH)$) (rxn_58) {};
+  \node[rx1,label=above right:R53,yshift=+0.0cm] at ($(GA_S1P)!0.5!(GA_SPH)$) (rxn_53) {};
   \node[enz,above=0.5cm of rxn_53] (GA_SK1) {SK1};
   \node[enz] at (GA_SMS1 -| rxn_53) (GA_PAP) {PAP2a-b};
-  \node[rx1,label=below:rxn\_54] at (rxn_55 -| rxn_53) (rxn_54) {};
-  \node[rx1,label=above:rxn\_59] at ($(GA_C1P)!0.35!(GA_CER)$) (rxn_59) {};
-  \node[rx1,label=below:rxn\_60,right=0.3cm of rxn_59] (rxn_60) {};
+  \node[rx1,label=below right:R54] at (rxn_55 -| rxn_53) (rxn_54) {};
+  \node[rx1,label=above left:R59] at ($(GA_C1P)!0.35!(GA_CER)$) (rxn_59) {};
+  \node[rx1,label={below right,yshift=-0.1cm}:R60,right=0.3cm of rxn_59] (rxn_60) {};
   \node[enz,right=0.14cm of rxn_60] (GA_PAP2) {PAP2a-b};
   \node[enz] at (rxn_57 |- rxn_59) (GA_CERK) {CERK};
   \node[enz,above=0.5cm of rxn_58] (GA_Alk) {AlkCDase2-3};
@@ -712,57 +713,57 @@
 
   % GACF and upper row GA nodes (metabolites and some rxn nodes)
   \node[met,right=1.0cm of GA_S1P] (GACF_CER) {CER};
-  \node[rx1,above=2.0cm of GACF_CER,label=left:rxn\_41] (rxn_41) {};
+  \node[rx1,above=2.0cm of GACF_CER,label=left:R41] (rxn_41) {};
   \node[met,above=2.0cm of rxn_41] (GACF_GluCER) {GluCER};
   \node[enz,right=0.5cm of rxn_41] (GACF_GCS) {GCS};
   \node[met] at (GA_SK1 |- GACF_GluCER) (GA_GluCER) {GluCER};
   \node[met] at (GA_Alk |- GA_GluCER) (GA_LacCER) {LacCER};
   \node[met] at (GA_SM |- GA_LacCER) (GA_GSL) {GSL};
-  \node[rx2,label=below:rxn\_42] at ($(GA_GluCER)!0.4!(GACF_GluCER)$) (rxn_42) {};
+  \node[rx2,label=below:R42] at ($(GA_GluCER)!0.4!(GACF_GluCER)$) (rxn_42) {};
   \node[enz,above=0.5cm of rxn_42] (GA_FAPP2) {FAPP2};
-  \node[rx1,label=below:rxn\_43] at ($(GA_GluCER)!0.5!(GA_LacCER)$) (rxn_43) {};
+  \node[rx1,label=below:R43] at ($(GA_GluCER)!0.5!(GA_LacCER)$) (rxn_43) {};
   \node[enz,above=0.5cm of rxn_43] (GA_LacCerS) {LacCerS};
-  \node[rx1,label=below:rxn\_44] at ($(GA_GSL)!0.38!(GA_LacCER)$) (rxn_44) {};
+  \node[rx1,label=below:R44] at ($(GA_GSL)!0.38!(GA_LacCER)$) (rxn_44) {};
   \node[enz,above=0.37cm of rxn_44,inner sep=1pt,font=\linespread{0.6}\selectfont] (GA_Series) {Series of\\enzymes};
 
   % M nodes (metabolites and some rxn nodes)
   \node[met,left=2.0cm of GA_CERK,yshift=-0.5cm] (M_CER) {CER};
   \node[met,left=1.25cm of M_CER] (M_SPH) {SPH};
   \node[met,left=1.25cm of M_SPH] (M_S1P) {S1P};
-  \node[rx1,label=above:rxn\_19,yshift=+0.15cm] at ($(M_CER)!0.5!(M_SPH)$) (rxn_19) {};
-  \node[rx1,label=below:rxn\_20,yshift=-0.15cm] at ($(M_CER)!0.5!(M_SPH)$) (rxn_20) {};
-  \node[rx1,label=above:rxn\_17,yshift=+0.15cm] at ($(M_SPH)!0.5!(M_S1P)$) (rxn_17) {};
-  \node[rx1,label=below:rxn\_18,yshift=-0.15cm] at ($(M_SPH)!0.5!(M_S1P)$) (rxn_18) {};
+  \node[rx1,label=above right:R19,yshift=+0.15cm] at ($(M_CER)!0.5!(M_SPH)$) (rxn_19) {};
+  \node[rx1,label=below right:R20,yshift=-0.15cm] at ($(M_CER)!0.5!(M_SPH)$) (rxn_20) {};
+  \node[rx1,label=above right:R17,yshift=+0.15cm] at ($(M_SPH)!0.5!(M_S1P)$) (rxn_17) {};
+  \node[rx1,label=below right:R18,yshift=-0.15cm] at ($(M_SPH)!0.5!(M_S1P)$) (rxn_18) {};
   \node[enz,above=0.45cm of rxn_17] (M_SPP1) {SPP1};
   \node[enz,below=0.45cm of rxn_18] (M_SK2) {SK2};
   \node[enz,above=0.45cm of rxn_19] (M_CerS) {CerS};
   \node[enz,below=0.45cm of rxn_20] (M_ACDase) {ACDase};
 
   % C nodes (metabolites and some rxn nodes)
-  \node[rx2,label=below:rxn\_39] at (ER_CER -| GA_CER) (rxn_39) {};
+  \node[rx2,label=below:R39] at (ER_CER -| GA_CER) (rxn_39) {};
   \node[enz,right=0.5cm of rxn_39] (C_CERT) {CERT};
-  \node[rx2,below=3.0cm of GACF_CER,label=below:rxn\_40] (rxn_40) {};
-  \node[rx2,label=above:rxn\_45] at (OM_GSL -| GA_GSL) (rxn_45) {};
-  \node[rx2,label=right:rxn\_38] at (rxn_01 -| M_CER) (rxn_38) {};
+  \node[rx2,below=3.0cm of GACF_CER,label=below:R40] (rxn_40) {};
+  \node[rx2,label=above:R45] at (OM_GSL -| GA_GSL) (rxn_45) {};
+  \node[rx2,label=right:R38] at (rxn_01 -| M_CER) (rxn_38) {};
   \node[met,right=5.5cm of OM_PAP2,yshift=0.25cm] (C_S1P) {S1P};
   \node[met] at (C_S1P -| N_SK2) (C_SPH) {SPH};
-  \node[rx1,label=below:rxn\_36] at ($(C_SPH)!0.5!(C_S1P)$) (rxn_36) {};
-  \node[rx2,label=right:rxn\_52] at (C_SPH -| GA_SPH) (rxn_52) {};
+  \node[rx1,label=below:R36] at ($(C_SPH)!0.5!(C_S1P)$) (rxn_36) {};
+  \node[rx2,label=right:R52] at (C_SPH -| GA_SPH) (rxn_52) {};
   \node[enz,above=0.5cm of rxn_36] (C_SK2) {SK2};
-  \node[rx2,above=7.20cm of ER_CER,label=left:rxn\_07] (rxn_07) {};
-  \node[rx2,label=left:rxn\_24] at ($(OM_SM)!0.5!(ER_SM)$) (rxn_24) {};
-  \node[rx2,label=above:rxn\_61] at (M_CER |- GA_C1P) (rxn_61) {};
-  \node[rx2,label=above:rxn\_34] at (IM_S1P -| C_S1P) (rxn_34) {};
-  \node[rx2,label=above:rxn\_35,above=0.75cm of C_SPH] (rxn_35) {};
-  \node[rx2,label=left:rxn\_37,below=4.25cm of C_S1P] (rxn_37) {};
-  \node[rx2,label=left:rxn\_22,below=4.25cm of C_SPH] (rxn_22) {};
-  \node[rx2,label=right:rxn\_21,above=1.7cm of M_SPH] (rxn_21) {};
-  \node[rx2,label=below:rxn\_16] at (ER_CerS |- M_S1P) (rxn_16) {};
+  \node[rx2,above=7.20cm of ER_CER,label=left:R07] (rxn_07) {};
+  \node[rx2,label=left:R24] at ($(OM_SM)!0.5!(ER_SM)$) (rxn_24) {};
+  \node[rx2,label=above:R61] at (M_CER |- GA_C1P) (rxn_61) {};
+  \node[rx2,label=above:R34] at (IM_S1P -| C_S1P) (rxn_34) {};
+  \node[rx2,label=above:R35,above=0.75cm of C_SPH] (rxn_35) {};
+  \node[rx2,label=left:R37,below=4.25cm of C_S1P] (rxn_37) {};
+  \node[rx2,label=left:R22,below=4.25cm of C_SPH] (rxn_22) {};
+  \node[rx2,label=right:R21,above=1.7cm of M_SPH] (rxn_21) {};
+  \node[rx2,label=below:R16] at (ER_CerS |- M_S1P) (rxn_16) {};
 
   % OM edges (rxns and some metabolic rxn nodes)
-  \draw[cartoonOM] (OM_C1P) to node [rx1,label=left:rxn\_62] (rxn_62) {} (OM_CER);
-  \draw[cartoonOM] (OM_CER) to node [rx1,label=right:rxn\_26] (rxn_26) {} (OM_SPH);
-  \draw[cartoonOM] (OM_SM) to node [rx1,yshift=-0.75cm,label=right:rxn\_25] (rxn_25) {} (OM_CER);
+  \draw[cartoonOM] (OM_C1P) to node [rx1,label=left:R62] (rxn_62) {} (OM_CER);
+  \draw[cartoonOM] (OM_CER) to node [rx1,label=right:R26] (rxn_26) {} (OM_SPH);
+  \draw[cartoonOM] (OM_SM) to node [rx1,yshift=-0.75cm,label=right:R25] (rxn_25) {} (OM_CER);
   \draw[ctlineOM] (OM_SPH) to (rxn_27);
   \draw[cartoonOM] (rxn_27) to (OM_S1P);
   \draw[ctlinedOM] (rxn_27) to (OM_SK12);
@@ -796,9 +797,9 @@
   \draw[ctlinedIM] (rxn_28) to (IM_nSMase2);
 
   \draw[cartoonMA] (rxn_23) to (IM_SM);
-  \draw[cartoonMA] (IM_S1P) to node [rx2,xshift=0cm,label=above:rxn\_33] (rxn_33) {} (OM_S1P);
-  \draw[cartoonMA] (OM_SPH) to node [rx2,xshift=0cm,label=above:rxn\_32] (rxn_32) {} (IM_SPH);
-  \draw[cartoonMA] (OM_CER) to node [rx2,xshift=0cm,label=above:rxn\_31] (rxn_31) {} (IM_CER);
+  \draw[cartoonMA] (IM_S1P) to node [rx2,xshift=0cm,label=above:R33] (rxn_33) {} (OM_S1P);
+  \draw[cartoonMA] (OM_SPH) to node [rx2,xshift=0cm,label=above:R32] (rxn_32) {} (IM_SPH);
+  \draw[cartoonMA] (OM_CER) to node [rx2,xshift=0cm,label=above:R31] (rxn_31) {} (IM_CER);
 
   % ER edges (rxns and some metabolic rxn nodes)
   \draw[ctlinedER] (rxn_06) to (ER_SPL1);
