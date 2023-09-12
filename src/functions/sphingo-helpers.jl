@@ -182,7 +182,7 @@ end
 
 function compare_efms(#
   matlab::Matrix{Int64},
-  julia::Vector{Vector{Int16}},
+  julia::Vector{Vector{Int64}},
   S::Matrix{<:Real}
 )
   efms_matlab = reshape_efm_matrix(matlab, S)

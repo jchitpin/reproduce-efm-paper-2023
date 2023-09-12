@@ -23,7 +23,7 @@ The following is required:
   (by roughly 10^-16). Thus, the EFM weights may vary slightly from
   MarkovWeightedEFMs.jl and the other optimization-based approaches. This code
   was last run with `DifferentialEquations v7.4.0`.
-* All experiments conducted on a Ryzen 5950X with 16 cores allocated to Julia
+* All experiments conducted on a Ryzen 5950X with 1 core allocated to Julia
   and MATLAB with 32 GB of memory (16 GB recommended to run all scripts).
 
 ## Installation
@@ -35,7 +35,6 @@ following commands in your desired installation directory.
 2. `$ git clone jchitpin/reproduce-efm-paper-2023`  
 3. `$ cd reproduce-efm-paper-2023/src/`  
 4. `$ julia install-julia-packages.jl # or run line by line in Julia REPL`
-
 
 ## Workflow to reproduce results
 
@@ -65,7 +64,7 @@ Figure is generated via:
 2. `$ julia main-efm-weights-sphingo-markov.jl`
 3. `$ julia main-efm-weights-sphingo-optimization.jl`
 
-Figures are generated via:
+Figure is generated via:
 
 1. `sh figure-04.sh`
 
@@ -75,7 +74,7 @@ Figures are generated via:
 2. `$ julia main-efm-weights-sphingo-markov.jl`
 3. `$ julia main-efm-weights-sphingo-optimization.jl`
 
-Figures are generated via:
+Figure is generated via:
 
 1. `sh supplementary-01.sh`
 
@@ -85,7 +84,7 @@ Figures are generated via:
 2. `$ julia main-efm-weights-sphingo-markov.jl`
 3. `$ julia main-efm-weights-sphingo-optimization.jl`
 
-Figures are generated via:
+Figure is generated via:
 
 1. `sh supplementary-02.sh`
 
@@ -97,6 +96,15 @@ Figures are generated via:
 Table is generated via:
 
 1. `sh supplementary-03.sh`
+
+### Supplementary Figure 4
+
+1. `$ matlab -nodisplay -nosplash -nodesktop -r "run('benchmark_efm_matlab.m'); exit;"`
+2. `$ julia benchmark_efm_matlab.m`
+
+Figure is generated via:
+
+1. `sh supplementary-04.sh`
 
 ## Reference
 
