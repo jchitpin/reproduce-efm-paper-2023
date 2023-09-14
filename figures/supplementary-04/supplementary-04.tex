@@ -1,0 +1,84 @@
+\documentclass[varwidth,border=0pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usepackage{caption}
+\usepackage[labelformat=parens]{subcaption}
+
+\begin{document}
+
+% Style to select only points from #1 to #2 (inclusive)
+\pgfplotsset{select coords between index/.style 2 args={
+    x filter/.code={
+        \ifnum\coordindex<#1\def\pgfmathresult{}\fi
+        \ifnum\coordindex>#2\def\pgfmathresult{}\fi
+    }
+}}
+
+\begin{figure}[h]
+
+  \pgfplotstableread[col sep=tab,comment chars={}]{../../data/scatterplot-benchmark-markovweightedefms.jl-log10.csv}\julia
+  \pgfplotstableread[col sep=tab,comment chars={}]{../../data/scatterplot-benchmark-fluxmodecalculator-log10.csv}\matlab
+
+  % Regression coefficients for Julia
+  \pgfplotstablecreatecol[linear regression]
+  {regression}
+  {\julia}
+  \xdef\slopeA{\pgfplotstableregressiona}
+  \xdef\interceptA{\pgfplotstableregressionb}
+
+  % Regression coefficients for MATLAB
+  \pgfplotstablecreatecol[linear regression]
+  {regression}
+  {\matlab}
+  \xdef\slopeB{\pgfplotstableregressiona}
+  \xdef\interceptB{\pgfplotstableregressionb}
+
+  \begin{tikzpicture}
+
+  %\begin{loglogaxis}[%
+  \begin{axis}[%
+    width=10cm,
+    height=7.5cm,
+    %xmin=-10,
+    %xmax=1000000,
+    xmin=1,
+    xmax=5.5,
+    %ymin=0.0001,
+    %ymax=10000,
+    ymin=-4,
+    ymax=+4,
+    xlabel={Number of EFMs ($\log_{10}$)},
+    ylabel={Run time ($\log_{10}$(s))},
+    xtick pos=left,
+    ytick pos=left,
+    legend cell align={left},
+    legend style={legend pos=north west, font=\tiny}
+  ]
+
+  \addplot[only marks, fill opacity=1.0, mark size=2, draw=black,fill=white] table[x=efms,y=julia] \julia; % Julia
+  \addlegendentry{MarkovWeightedEFMs.jl};
+  \addplot[only marks, fill opacity=1.0, mark size=2, draw=black,fill=white!25!black] table[x=efms,y=matlab] \matlab; % MATLAB
+  \addlegendentry{FluxModeCalculator + LP-solved weights};
+  \addplot[dotted,black,select coords between index={0}{6}] table[x=efms, y={create col/linear regression={y=julia}}] \julia;
+  \addlegendentry{%
+    $
+    \pgfmathprintnumber{\slopeA} \cdot x
+    \pgfmathprintnumber[print sign]{\interceptA}
+    $
+  };
+  \addplot[dashed,black] table[x=efms, y={create col/linear regression={y=matlab}}] \matlab;
+  \addlegendentry{%
+    $
+    \pgfmathprintnumber{\slopeB} \cdot x
+    \pgfmathprintnumber[print sign]{\slopeB}
+    $
+  };
+  \end{axis}
+  %\end{loglogaxis}
+
+  \end{tikzpicture}
+
+\end{figure}
+
+\end{document}
